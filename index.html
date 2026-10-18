@@ -1,34 +1,24 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="invitation-locked">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#172849">
-
-<title>Wedding Dinner | Zainab &amp; Mizan</title>
-<meta name="description" content="Wedding Dinner of Zainab and Mizan — 26 November 2026.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wedding Dinner | Zainab &amp; Mizan">
-<meta property="og:description" content="Thursday, 26 November 2026 · 6 PM to 10 PM · Ahmedabad">
-<meta property="og:url" content="https://ivoryvows.github.io/Royal-Sapphire/">
-<meta property="og:image" content="https://ivoryvows.github.io/Royal-Sapphire/msg.JPG">
-<meta property="og:image:secure_url" content="https://ivoryvows.github.io/Royal-Sapphire/msg.JPG">
-<meta property="og:image:alt" content="Zainab and Mizan Wedding Dinner Invitation">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ivoryvows.github.io/Royal-Sapphire/msg.JPG">
+<meta name="theme-color" content="#244a80">
+<title>Wedding Dinner Invitation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Cinzel:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --navy: #172849;
-  --blue: #344f78;
-  --gold: #c7a96b;
-  --cream: #f8f3e9;
-  --white: #fffdf8;
+  --blue-dark: #1c2d59;
+  --blue-deep: #244a80;
+  --blue-mid: #5b87c5;
+  --blue-light: #8baed6;
+  --blue-pale: #edf4fc;
+  --gold: #d6bd85;
 }
 
 * {
@@ -37,640 +27,929 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--navy);
+  background: var(--blue-dark);
+}
+
+html.invitation-locked,
+html.invitation-locked body {
+  overflow: hidden;
+  height: 100%;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
-  color: var(--navy);
-  font-family: "Cormorant Garamond", serif;
-  text-align: center;
-  background: radial-gradient(
-    ellipse at top,
-    #fffdf8 0%,
-    #e7edf5 38%,
-    #b8c9df 68%,
-    #172849 100%
-  );
   overflow-x: hidden;
+  color: #fffdf8;
+  font-family: 'Cormorant Garamond', serif;
+  background: linear-gradient(
+    180deg,
+    #edf4fc 0%,
+    #dbe7f5 13%,
+    #a9c5e5 34%,
+    #7198c6 56%,
+    #244a80 79%,
+    #1c2d59 100%
+  );
 }
 
-body.locked {
-  height: 100vh;
-  overflow: hidden;
+button {
+  font: inherit;
 }
 
-button, a {
-  -webkit-tap-highlight-color: transparent;
+/* Twinkle canvas */
+#sparkCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  pointer-events: none;
 }
 
+/* Language */
 .language-switch {
   position: fixed;
-  z-index: 100;
-  top: 14px;
-  right: 14px;
+  z-index: 300;
+  top: max(15px, env(safe-area-inset-top));
+  right: 15px;
   display: flex;
   gap: 5px;
   padding: 5px;
-  border: 1px solid var(--gold);
+  border: 1px solid rgba(255,255,255,.6);
   border-radius: 30px;
-  background: rgba(255,253,248,.95);
+  background: rgba(28,45,89,.6);
+  backdrop-filter: blur(12px);
 }
 
 .language-switch button {
   border: 0;
-  border-radius: 20px;
+  border-radius: 22px;
   padding: 8px 12px;
+  color: white;
   background: transparent;
-  color: var(--navy);
-  font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
   cursor: pointer;
 }
 
 .language-switch button.active {
-  background: var(--navy);
-  color: white;
+  color: #243d6a;
+  background: #fffaf0;
 }
 
-#musicButton {
+/* Cover */
+#cover {
   position: fixed;
-  z-index: 110;
-  top: 14px;
-  left: 14px;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  background: rgba(255,253,248,.95);
-  color: var(--navy);
-  font-size: 19px;
-  cursor: pointer;
-}
-
-#opening {
-  position: fixed;
-  z-index: 50;
   inset: 0;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  background: var(--navy);
-  opacity: 1;
-  visibility: visible;
-  transition: opacity .9s ease, visibility .9s ease;
+  z-index: 250;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background: #edf4fc;
+  cursor: pointer;
+  transition: opacity 1s ease, visibility 1s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-#opening.hidden {
+#cover.cover-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-#openingVideo,
-#coverImage {
+.cover-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cover-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(28,45,89,.02),
+    rgba(28,45,89,.02) 60%,
+    rgba(28,45,89,.25)
+  );
+  pointer-events: none;
+}
+
+.cover-prompt {
+  position: absolute;
+  bottom: max(55px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 90%;
+  padding: 13px 24px;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 40px;
+  color: white;
+  background: rgba(28,45,89,.45);
+  backdrop-filter: blur(10px);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  pointer-events: none;
+  animation: promptPulse 2s ease-in-out infinite;
+}
+
+@keyframes promptPulse {
+  0%, 100% { opacity: .75; }
+  50% { opacity: 1; }
+}
+
+/* Video */
+#intro {
+  position: relative;
+  width: 100%;
+  background: #244a80;
+  isolation: isolate;
+}
+
+.video-stage {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 540px;
+  overflow: hidden;
+  background: #244a80;
+}
+
+#introVideo {
   position: absolute;
   inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  background: #244a80;
 }
 
-#openingVideo {
-  z-index: 1;
-  background: var(--navy);
-}
-
-#coverImage {
-  z-index: 3;
-  opacity: 1;
-  cursor: pointer;
-  transition: opacity .7s ease;
-}
-
-#coverImage.fade {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.cover-shade {
+.video-blend {
   position: absolute;
-  z-index: 4;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
   background: linear-gradient(
-    to bottom,
-    rgba(12,25,48,.12),
-    transparent 45%,
-    rgba(12,25,48,.38)
+    180deg,
+    rgba(36,74,128,0) 0%,
+    rgba(36,74,128,0) 60%,
+    rgba(36,74,128,.10) 70%,
+    rgba(36,74,128,.38) 80%,
+    rgba(36,74,128,.75) 90%,
+    #244a80 100%
   );
 }
 
-.tap-message {
+.scroll-prompt {
   position: absolute;
-  z-index: 5;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 0 15px max(45px, env(safe-area-inset-bottom));
+  z-index: 4;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  width: max-content;
+  text-align: center;
   color: white;
-  font-size: 17px;
-  letter-spacing: 4px;
-  text-shadow: 0 2px 10px #000;
-  pointer-events: none;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: .7; }
-  50% { opacity: 1; }
-}
-
-#scrollHint {
-  position: fixed;
-  z-index: 45;
-  bottom: 24px;
-  left: 0;
-  right: 0;
-  color: white;
-  font-family: Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-shadow: 0 2px 8px #000;
   opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
   pointer-events: none;
-  transition: opacity .5s;
 }
 
-#scrollHint.show {
+.scroll-prompt.visible {
   opacity: 1;
+  visibility: visible;
 }
 
-#scrollHint .arrow {
+.scroll-prompt span {
   display: block;
-  margin-top: 8px;
-  font-size: 24px;
-  animation: down 1.4s infinite;
-}
-
-@keyframes down {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-
-main {
-  width: 100%;
-  max-width: 620px;
-  margin: auto;
-  padding: 55px 20px 35px;
-}
-
-.dinner-card {
-  position: relative;
-  overflow: hidden;
-  margin: 22px auto;
-  padding: 42px 22px;
-  border: 1px solid var(--gold);
-  border-radius: 180px 180px 18px 18px;
-  background: rgba(255,253,248,.88);
-  box-shadow: 0 15px 45px rgba(23,40,73,.12);
-}
-
-.dinner-card::before {
-  content: "";
-  position: absolute;
-  inset: 9px;
-  border: 1px solid rgba(199,169,107,.48);
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.eyebrow,
-.section-label {
-  color: #9c7b3d;
-  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
 
-.eyebrow {
-  position: relative;
-  margin: 0 0 20px;
-}
-
-.names {
-  position: relative;
-  margin: 12px 0 22px;
-  color: var(--navy);
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(48px, 12vw, 68px);
-  line-height: 1.15;
-  font-weight: 400;
-}
-
-.ampersand {
+.scroll-arrow {
   display: block;
-  margin: 4px 0;
-  color: var(--gold);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 32px;
-  font-style: italic;
+  margin-top: 12px;
+  font-size: 23px;
+  animation: arrowDown 1.8s ease-in-out infinite;
 }
 
-.gold-line {
-  width: 90px;
-  height: 1px;
-  margin: 22px auto;
-  background: var(--gold);
+@keyframes arrowDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
 }
 
-.intro {
+/* Main page gradient */
+#invitationContent {
   position: relative;
-  max-width: 350px;
+  z-index: 3;
+  margin-top: -1px;
+  color: var(--blue-dark);
+  background: linear-gradient(
+    180deg,
+    #244a80 0%,
+    #7198c6 24%,
+    #a9c5e5 52%,
+    #dbe7f5 76%,
+    #edf4fc 100%
+  );
+}
+
+.content-inner {
+  width: min(100% - 32px, 540px);
   margin: 0 auto;
-  font-size: 21px;
-  line-height: 1.6;
 }
 
-.section-card {
+/* Event date card */
+#eventDetails {
   position: relative;
-  margin: 24px auto;
-  padding: 32px 20px;
-  border: 1px solid rgba(199,169,107,.85);
-  border-radius: 18px;
-  background: rgba(255,253,248,.9);
-  box-shadow: 0 12px 35px rgba(23,40,73,.1);
+  padding: 62px 0 68px;
+  text-align: center;
+  scroll-margin-top: 20px;
 }
 
-.section-label {
-  margin: 0 0 14px;
+.event-card {
+  position: relative;
+  overflow: hidden;
+  padding: 46px 24px 43px;
+  border: 1px solid rgba(255,255,255,.86);
+  border-radius: 190px 190px 16px 16px;
+  background: linear-gradient(
+    155deg,
+    rgba(255,255,255,.78),
+    rgba(237,244,252,.53)
+  );
+  box-shadow:
+    0 18px 50px rgba(28,45,89,.12),
+    inset 0 0 0 5px rgba(255,255,255,.16);
+  backdrop-filter: blur(8px);
+}
+
+.event-card::before,
+.event-card::after {
+  content: "✧";
+  display: block;
+  color: #b89a5c;
+  font-size: 23px;
+  line-height: 1;
+}
+
+.event-card::before {
+  margin-bottom: 24px;
+}
+
+.event-card::after {
+  margin-top: 25px;
+}
+
+.insha {
+  margin: 0 0 18px;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(32px, 8vw, 42px);
+  color: #526f9b;
+}
+
+.event-heading {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(23px, 6vw, 31px);
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.5;
+  color: #294873;
+}
+
+.divider {
+  width: 62px;
+  height: 1px;
+  border: 0;
+  margin: 22px auto;
+  background: #b89a5c;
+}
+
+.event-date {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(15px, 4vw, 19px);
+  line-height: 1.8;
+  color: #314d77;
+}
+
+.event-time {
+  margin-top: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  line-height: 1.9;
+  color: #526f9b;
+}
+
+.event-note {
+  max-width: 310px;
+  margin: 25px auto 0;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #52627c;
+}
+
+/* Venue */
+#venue {
+  position: relative;
+  padding: 28px 0 80px;
+  text-align: center;
+}
+
+.section-kicker {
+  margin: 0 0 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #526f9b;
 }
 
 .section-title {
-  margin: 0;
-  font-size: clamp(29px, 7vw, 42px);
-  line-height: 1.25;
+  margin: 0 auto 25px;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(25px, 7vw, 34px);
   font-weight: 500;
+  color: #294873;
 }
 
-.date-number {
-  margin: 12px 0;
-  color: var(--blue);
-  font-size: clamp(40px, 10vw, 56px);
-  line-height: 1.1;
+.venue-card {
+  padding: 32px 22px;
+  border: 1px solid rgba(255,255,255,.82);
+  border-radius: 15px;
+  background: rgba(255,255,255,.52);
+  box-shadow: 0 15px 45px rgba(28,45,89,.10);
+  backdrop-filter: blur(8px);
 }
 
-.date-detail {
-  margin: 0;
-  font-size: 22px;
-  letter-spacing: 1px;
-}
-
-.time-detail {
-  margin: 12px 0;
-  color: var(--blue);
-  font-size: clamp(29px, 8vw, 43px);
+.venue-icon {
+  width: 53px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 17px;
+  border: 1px solid rgba(184,154,92,.6);
+  border-radius: 50%;
+  color: #8b7449;
+  font-size: 23px;
 }
 
 .venue-name {
-  margin: 8px 0 15px;
-  font-size: 32px;
-  font-weight: 600;
+  margin: 0 0 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  line-height: 1.5;
+  color: #294873;
 }
 
-.address {
-  max-width: 390px;
-  margin: 0 auto 20px;
-  font-size: 19px;
-  line-height: 1.55;
+.venue-address {
+  max-width: 370px;
+  margin: 0 auto 23px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #52627c;
 }
 
 .map-frame {
-  display: block;
   width: 100%;
   height: 245px;
-  margin: 18px auto;
-  border: 1px solid var(--gold);
-  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #dbe7f5;
 }
 
-.map-link {
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.map-button {
   display: inline-block;
-  margin-top: 5px;
-  padding: 12px 21px;
-  border: 1px solid var(--gold);
+  margin-top: 22px;
+  padding: 13px 24px;
+  border: 1px solid #526f9b;
   border-radius: 30px;
-  color: var(--navy);
-  background: var(--cream);
+  background: #294873;
+  color: #fff;
   text-decoration: none;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.bow-section {
-  padding: 10px 0;
-}
-
-.bow-image {
-  display: block;
-  width: min(210px, 62%);
-  max-height: 220px;
-  margin: 10px auto;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 10px #17284916);
-}
-
-.closing-card {
-  margin: 25px auto 18px;
-  padding: 35px 18px;
-  border-top: 1px solid var(--gold);
-  border-bottom: 1px solid var(--gold);
-}
-
-.closing-script {
-  margin: 0 0 8px;
-  font-family: "Great Vibes", cursive;
-  font-size: 43px;
-}
-
-.family-name {
-  margin: 0;
-  font-size: 27px;
-  letter-spacing: 2px;
-}
-
-.footer {
-  padding: 12px 0 24px;
-  color: rgba(255,253,248,.95);
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background .25s ease, transform .25s ease;
+}
+
+.map-button:hover {
+  background: #1c2d59;
+  transform: translateY(-2px);
+}
+
+/* Closing */
+#closing {
+  position: relative;
+  overflow: hidden;
+  padding: 15px 20px 75px;
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    #edf4fc 0%,
+    #dbe7f5 28%,
+    #a9c5e5 60%,
+    #7198c6 100%
+  );
+}
+
+.bow-decoration {
+  display: block;
+  width: 100px;
+  height: auto;
+  max-height: 110px;
+  object-fit: contain;
+  margin: 0 auto 22px;
+  opacity: .9;
+}
+
+.closing-arabic {
+  margin: 10px 0 22px;
+  font-size: clamp(28px, 7vw, 37px);
+  color: #294873;
+  line-height: 1.7;
+}
+
+.closing-regards {
+  margin: 0 0 6px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 34px;
+  color: #294873;
+}
+
+.closing-family {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 19px;
   letter-spacing: 3px;
+  color: #294873;
 }
 
-body.hindi,
-body.hindi .section-card,
-body.hindi .dinner-card {
-  font-family: "Noto Sans Devanagari", sans-serif;
+.save-date {
+  margin: 45px 0 0;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #294873;
 }
 
-@media (max-width: 380px) {
-  main {
-    padding-left: 14px;
-    padding-right: 14px;
+.closing-ornament {
+  width: 65px;
+  height: 1px;
+  margin: 22px auto;
+  background: #b89a5c;
+}
+
+/* Music button */
+.music-button {
+  position: fixed;
+  z-index: 300;
+  left: 15px;
+  bottom: max(17px, env(safe-area-inset-bottom));
+  display: none;
+  width: 43px;
+  height: 43px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 50%;
+  background: rgba(28,45,89,.72);
+  color: white;
+  font-size: 17px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.music-button.show {
+  display: flex;
+}
+
+.music-button.playing span {
+  animation: musicSpin 5s linear infinite;
+}
+
+@keyframes musicSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+  .video-stage {
+    min-height: 100svh;
   }
 
-  .dinner-card {
-    padding: 36px 17px;
+  #eventDetails {
+    padding-top: 48px;
+    padding-bottom: 52px;
   }
 
-  .section-card {
-    padding: 27px 15px;
+  .event-card {
+    padding: 39px 19px 35px;
   }
 
   .map-frame {
-    height: 215px;
+    height: 220px;
+  }
+
+  .venue-card {
+    padding: 27px 17px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    scroll-behavior: auto !important;
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-arrow,
+  .cover-prompt {
+    animation: none;
   }
 }
 </style>
 </head>
 
-<body class="locked">
+<body>
 
-<div class="language-switch">
-  <button id="englishButton" class="active" type="button">English</button>
-  <button id="hindiButton" type="button">हिंदी</button>
+<canvas id="sparkCanvas" aria-hidden="true"></canvas>
+
+<div class="language-switch" aria-label="Choose language">
+  <button type="button" class="active" id="englishButton">EN</button>
+  <button type="button" id="hindiButton">हिन्दी</button>
 </div>
 
-<button id="musicButton" type="button" aria-label="Toggle music">♫</button>
+<!-- Cover: tap anywhere to open -->
+<div id="cover" role="button" tabindex="0" aria-label="Tap to open invitation">
+  <img class="cover-image" src="env.jpg" alt="Invitation cover">
+  <div class="cover-shade"></div>
+  <div class="cover-prompt"
+       data-en="Tap to Open"
+       data-hi="खोलने के लिए टैप करें">Tap to Open</div>
+</div>
+
+<!-- Intro video -->
+<section id="intro" aria-label="Invitation video">
+  <div class="video-stage">
+    <video
+      id="introVideo"
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      disablepictureinpicture
+      poster="env.jpg"
+    >
+      <source src="blue..mp4" type="video/mp4">
+      Your browser does not support this video.
+    </video>
+
+    <div class="video-blend"></div>
+
+    <div class="scroll-prompt" id="scrollPrompt">
+      <span data-en="Scroll to Discover"
+            data-hi="आगे देखने के लिए स्क्रॉल करें">Scroll to Discover</span>
+      <b class="scroll-arrow">↓</b>
+    </div>
+  </div>
+</section>
+
+<!-- Main invitation -->
+<main id="invitationContent">
+
+  <!-- Date and time directly after video -->
+  <section id="eventDetails">
+    <div class="content-inner">
+      <div class="event-card">
+
+        <p class="insha"
+           data-en="Insha’Allah"
+           data-hi="इंशाअल्लाह">Insha’Allah</p>
+
+        <h1 class="event-heading"
+            data-en="Wedding Dinner"
+            data-hi="वेडिंग डिनर">Wedding Dinner</h1>
+
+        <hr class="divider">
+
+        <div class="event-date"
+             data-en="Thursday, 26th November 2026"
+             data-hi="गुरुवार, 26 नवंबर 2026">
+          Thursday, 26th November 2026
+        </div>
+
+        <div class="event-time"
+             data-en="6:00 PM – 10:00 PM"
+             data-hi="शाम 6:00 बजे – रात 10:00 बजे">
+          6:00 PM – 10:00 PM
+        </div>
+
+        <p class="event-note"
+           data-en="We look forward to celebrating this special evening with you."
+           data-hi="इस खास शाम को आपके साथ मनाने के लिए हम उत्सुक हैं।">
+          We look forward to celebrating this special evening with you.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue -->
+  <section id="venue">
+    <div class="content-inner">
+
+      <p class="section-kicker"
+         data-en="The Celebration"
+         data-hi="समारोह">The Celebration</p>
+
+      <h2 class="section-title"
+          data-en="The Venue"
+          data-hi="कार्यक्रम स्थल">The Venue</h2>
+
+      <div class="venue-card">
+
+        <div class="venue-icon" aria-hidden="true">⌖</div>
+
+        <h3 class="venue-name">Brooks Restaurant</h3>
+
+        <p class="venue-address"
+           data-en="Mansarovar Rd, beside Kataria Maruti Suzuki Service Center, Tragad, Ahmedabad, Gujarat 382470"
+           data-hi="मानसरोवर रोड, कटारिया मारुति सुज़ुकी सर्विस सेंटर के पास, त्रागड़, अहमदाबाद, गुजरात 382470">
+          Mansarovar Rd, beside Kataria Maruti Suzuki Service Center,
+          Tragad, Ahmedabad, Gujarat 382470
+        </p>
+
+        <div class="map-frame">
+          <iframe
+            title="Brooks Restaurant location map"
+            src="https://maps.google.com/maps?q=Brooks%20Restaurant%2C%20Mansarovar%20Rd%2C%20Tragad%2C%20Ahmedabad%2C%20Gujarat%20382470&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <a
+          class="map-button"
+          href="https://www.google.com/maps/search/?api=1&query=Brooks+Restaurant+Mansarovar+Rd+Tragad+Ahmedabad+Gujarat+382470"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-en="View Location"
+          data-hi="लोकेशन देखें">View Location</a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <footer id="closing">
+
+    <img class="bow-decoration" src="bow.PNG" alt="" loading="lazy">
+
+    <p class="closing-arabic" lang="ar" dir="rtl">الْحَمْدُ لِلَّٰهِ</p>
+
+    <p class="closing-regards"
+       data-en="With regards,"
+       data-hi="सादर,">With regards,</p>
+
+    <p class="closing-family">Kanani Family</p>
+
+    <div class="closing-ornament"></div>
+
+    <p class="save-date"
+       data-en="SAVE THE DATE"
+       data-hi="तारीख़ याद रखें">SAVE THE DATE</p>
+
+  </footer>
+</main>
 
 <audio id="backgroundMusic" loop preload="auto">
   <source src="dulha.mp3" type="audio/mpeg">
 </audio>
 
-<section id="opening" aria-label="Invitation cover">
-  <video id="openingVideo" playsinline webkit-playsinline preload="auto">
-    <source src="blue..mp4" type="video/mp4">
-  </video>
-
-  <img
-    id="coverImage"
-    src="env.jpg"
-    alt="Tap to open the invitation"
-    draggable="false"
-  >
-
-  <div class="cover-shade"></div>
-
-  <div class="tap-message">
-    <span data-en="TAP TO OPEN" data-hi="खोलने के लिए टैप करें">TAP TO OPEN</span>
-  </div>
-</section>
-
-<div id="scrollHint">
-  <span data-en="SCROLL TO DISCOVER" data-hi="आगे देखने के लिए नीचे जाएँ">SCROLL TO DISCOVER</span>
-  <span class="arrow">⌄</span>
-</div>
-
-<main>
-  <section class="dinner-card">
-    <p class="eyebrow" data-en="Wedding Dinner" data-hi="शादी की दावत">Wedding Dinner</p>
-
-    <h1 class="names">
-      Zainab
-      <span class="ampersand">&amp;</span>
-      Mizan
-    </h1>
-
-    <div class="gold-line"></div>
-
-    <p class="intro"
-       data-en="Together with their families, we warmly invite you to celebrate this special evening with us."
-       data-hi="अपने परिवारों के साथ, हम आपको इस खास शाम की खुशियों में शामिल होने के लिए सादर आमंत्रित करते हैं।">
-      Together with their families, we warmly invite you to celebrate this special evening with us.
-    </p>
-  </section>
-
-  <section class="section-card">
-    <p class="section-label" data-en="Save the Date" data-hi="तारीख़ याद रखें">Save the Date</p>
-    <h2 class="section-title" data-en="Thursday" data-hi="गुरुवार">Thursday</h2>
-    <p class="date-number" data-en="26th" data-hi="26">26th</p>
-    <p class="date-detail" data-en="November 2026" data-hi="नवंबर 2026">November 2026</p>
-  </section>
-
-  <section class="section-card">
-    <p class="section-label" data-en="The Celebration" data-hi="समारोह का समय">The Celebration</p>
-    <h2 class="section-title" data-en="Time" data-hi="समय">Time</h2>
-    <p class="time-detail">6:00 PM – 10:00 PM</p>
-    <p class="intro"
-       data-en="We look forward to celebrating with you."
-       data-hi="हमें आपके साथ इस खुशी को मनाने का इंतज़ार रहेगा।">
-      We look forward to celebrating with you.
-    </p>
-  </section>
-
-  <section class="section-card">
-    <p class="section-label" data-en="Join Us At" data-hi="कार्यक्रम का स्थान">Join Us At</p>
-
-    <h2 class="venue-name"
-        data-en="Brooks Restaurant"
-        data-hi="ब्रूक्स रेस्टोरेंट">Brooks Restaurant</h2>
-
-    <p class="address"
-       data-en="Mansarovar Rd, beside Kataria Maruti Suzuki Service Center, Tragad, Ahmedabad, Gujarat 382470"
-       data-hi="मानसरोवर रोड, कटारिया मारुति सुज़ुकी सर्विस सेंटर के पास, त्रागड़, अहमदाबाद, गुजरात 382470">
-      Mansarovar Rd, beside Kataria Maruti Suzuki Service Center, Tragad, Ahmedabad, Gujarat 382470
-    </p>
-
-    <iframe
-      class="map-frame"
-      title="Brooks Restaurant map"
-      src="https://maps.google.com/maps?q=Brooks%20Restaurant%2C%20Mansarovar%20Rd%2C%20Tragad%2C%20Ahmedabad%2C%20Gujarat%20382470&z=15&output=embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      allowfullscreen>
-    </iframe>
-
-    <a
-      class="map-link"
-      href="https://www.google.com/maps/search/?api=1&query=Brooks+Restaurant%2C+Mansarovar+Rd%2C+Tragad%2C+Ahmedabad%2C+Gujarat+382470"
-      target="_blank"
-      rel="noopener noreferrer"
-      data-en="OPEN IN GOOGLE MAPS"
-      data-hi="गूगल मैप्स पर देखें">
-      OPEN IN GOOGLE MAPS
-    </a>
-  </section>
-
-  <section class="bow-section">
-    <img class="bow-image" src="bow.PNG" alt="">
-  </section>
-
-  <section class="closing-card">
-    <p class="closing-script" data-en="With regards" data-hi="सादर">With regards</p>
-    <p class="family-name" data-en="KANANI FAMILY" data-hi="कनानी परिवार">KANANI FAMILY</p>
-  </section>
-
-  <footer class="footer"
-          data-en="A SPECIAL EVENING · A BEAUTIFUL MEMORY"
-          data-hi="एक खास शाम · एक खूबसूरत याद">
-    A SPECIAL EVENING · A BEAUTIFUL MEMORY
-  </footer>
-</main>
+<button type="button" class="music-button" id="musicButton"
+        aria-label="Pause or resume music" title="Music on/off">
+  <span id="musicIcon">♫</span>
+</button>
 
 <script>
-const body = document.body;
-const opening = document.getElementById("opening");
-const coverImage = document.getElementById("coverImage");
-const openingVideo = document.getElementById("openingVideo");
-const backgroundMusic = document.getElementById("backgroundMusic");
-const musicButton = document.getElementById("musicButton");
-const scrollHint = document.getElementById("scrollHint");
-
-const englishButton = document.getElementById("englishButton");
-const hindiButton = document.getElementById("hindiButton");
+const cover = document.getElementById('cover');
+const introVideo = document.getElementById('introVideo');
+const backgroundMusic = document.getElementById('backgroundMusic');
+const scrollPrompt = document.getElementById('scrollPrompt');
+const musicButton = document.getElementById('musicButton');
+const musicIcon = document.getElementById('musicIcon');
 
 let invitationStarted = false;
 
-function startInvitation() {
-  if (invitationStarted) return;
-  invitationStarted = true;
+/* Language */
+function setLanguage(language) {
+  document.documentElement.lang = language === 'hi' ? 'hi' : 'en';
 
-  // Play music directly from the visitor's tap.
-  backgroundMusic.volume = 0.65;
-  backgroundMusic.play().then(() => {
-    musicButton.textContent = "♫";
-  }).catch((error) => {
-    console.log("Music could not start:", error);
-    musicButton.textContent = "♪";
+  document.querySelectorAll('[data-en][data-hi]').forEach(function(element) {
+    element.textContent = element.getAttribute('data-' + language);
   });
 
-  // Hide the cover and play the video.
-  openingVideo.currentTime = 0;
+  document.getElementById('englishButton').classList.toggle('active', language === 'en');
+  document.getElementById('hindiButton').classList.toggle('active', language === 'hi');
+}
 
-  openingVideo.play().then(() => {
-    coverImage.classList.add("fade");
-  }).catch((error) => {
-    invitationStarted = false;
-    console.error("Video playback error:", error);
-    alert("Video play nahi ho rahi. GitHub mein blue..mp4 ka exact filename check karo.");
+document.getElementById('englishButton').addEventListener('click', function() {
+  setLanguage('en');
+});
+
+document.getElementById('hindiButton').addEventListener('click', function() {
+  setLanguage('hi');
+});
+
+/* Cover tap */
+function startInvitation() {
+  if (invitationStarted) return;
+
+  invitationStarted = true;
+  cover.classList.add('cover-hidden');
+  document.documentElement.classList.remove('invitation-locked');
+  document.body.style.overflowX = 'hidden';
+  musicButton.classList.add('show');
+
+  /*
+    Attempt video playback during the actual tap.
+    If the file is missing or playback fails, show the cover again
+    so the visitor can retry after correcting the video filename.
+  */
+  const videoPromise = introVideo.play();
+
+  if (videoPromise && typeof videoPromise.catch === 'function') {
+    videoPromise.catch(function(error) {
+      console.error('Video playback failed:', error);
+      invitationStarted = false;
+      cover.classList.remove('cover-hidden');
+      document.documentElement.classList.add('invitation-locked');
+      alert('Video play nahi hui. blue..mp4 filename check karo.');
+    });
+  }
+
+  backgroundMusic.volume = 0.55;
+  backgroundMusic.play().then(updateMusicButton).catch(function() {
+    updateMusicButton();
   });
 }
 
-// The cover itself receives the tap.
-coverImage.addEventListener("click", function(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  startInvitation();
-});
+cover.addEventListener('click', startInvitation);
 
-// Also support tapping anywhere on the opening screen.
-opening.addEventListener("click", function() {
-  startInvitation();
-});
-
-// Once the video starts, fade out the cover.
-openingVideo.addEventListener("playing", function() {
-  coverImage.classList.add("fade");
-});
-
-// When the video finishes, reveal the invitation page.
-openingVideo.addEventListener("ended", function() {
-  opening.classList.add("hidden");
-  body.classList.remove("locked");
-  scrollHint.classList.add("show");
-
-  setTimeout(() => {
-    scrollHint.classList.remove("show");
-  }, 6000);
-});
-
-// Music on/off button.
-musicButton.addEventListener("click", async function() {
-  if (backgroundMusic.paused) {
-    try {
-      await backgroundMusic.play();
-      musicButton.textContent = "♫";
-    } catch (error) {
-      musicButton.textContent = "♪";
-    }
-  } else {
-    backgroundMusic.pause();
-    musicButton.textContent = "♪";
+cover.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    startInvitation();
   }
 });
 
-// English and Hindi language switching.
-function setLanguage(language) {
-  const hindi = language === "hi";
+/* Freeze at final frame and show scroll prompt */
+introVideo.addEventListener('ended', function() {
+  introVideo.pause();
 
-  document.documentElement.lang = hindi ? "hi" : "en";
-  body.classList.toggle("hindi", hindi);
+  try {
+    introVideo.currentTime = introVideo.duration;
+  } catch (error) {
+    /* Keep the browser's final frame. */
+  }
 
-  document.querySelectorAll("[data-en][data-hi]").forEach(element => {
-    element.textContent = hindi
-      ? element.getAttribute("data-hi")
-      : element.getAttribute("data-en");
-  });
+  scrollPrompt.classList.add('visible');
+});
 
-  englishButton.classList.toggle("active", !hindi);
-  hindiButton.classList.toggle("active", hindi);
+/* Music control */
+function updateMusicButton() {
+  const playing = !backgroundMusic.paused;
+
+  musicButton.classList.toggle('playing', playing);
+  musicIcon.textContent = playing ? '♫' : '♪';
+  musicButton.setAttribute('aria-label', playing ? 'Pause music' : 'Resume music');
 }
 
-englishButton.addEventListener("click", () => setLanguage("en"));
-hindiButton.addEventListener("click", () => setLanguage("hi"));
+musicButton.addEventListener('click', function() {
+  if (backgroundMusic.paused) {
+    backgroundMusic.play().then(updateMusicButton).catch(function() {});
+  } else {
+    backgroundMusic.pause();
+    updateMusicButton();
+  }
+});
 
-setLanguage("en");
+backgroundMusic.addEventListener('play', updateMusicButton);
+backgroundMusic.addEventListener('pause', updateMusicButton);
+
+/* Small white twinkle sparkles */
+(function createTwinkles() {
+  const canvas = document.getElementById('sparkCanvas');
+  const ctx = canvas.getContext('2d');
+
+  let width = 0;
+  let height = 0;
+  let ratio = 1;
+  let particles = [];
+
+  function resizeCanvas() {
+    ratio = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * ratio;
+    canvas.height = height * ratio;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    const count = Math.min(65, Math.max(30, Math.floor(width / 6)));
+
+    particles = Array.from({ length: count }, function() {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 1.35 + 0.45,
+        phase: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.17 + 0.025,
+        drift: (Math.random() - 0.5) * 0.12
+      };
+    });
+  }
+
+  function drawSparkles() {
+    ctx.clearRect(0, 0, width, height);
+    const time = performance.now() * 0.001;
+
+    particles.forEach(function(p) {
+      const twinkle = (Math.sin(time * 2.1 + p.phase) + 1) / 2;
+      const alpha = 0.12 + twinkle * 0.78;
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.globalAlpha = alpha;
+
+      /* Tiny white glowing dot */
+      ctx.beginPath();
+      ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = '#ffffff';
+      ctx.shadowBlur = 7;
+      ctx.fill();
+
+      /* Fine cross-shaped twinkle */
+      if (twinkle > 0.68) {
+        ctx.shadowBlur = 5;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 0.55;
+
+        const length = 3 + twinkle * 3;
+
+        ctx.beginPath();
+        ctx.moveTo(-length, 0);
+        ctx.lineTo(length, 0);
+        ctx.moveTo(0, -length);
+        ctx.lineTo(0, length);
+        ctx.stroke();
+      }
+
+      ctx.restore();
+
+      p.y -= p.speed;
+      p.x += p.drift;
+
+      if (p.y < -8) {
+        p.y = height + 8;
+        p.x = Math.random() * width;
+      }
+
+      if (p.x < -8) p.x = width + 8;
+      if (p.x > width + 8) p.x = -8;
+    });
+
+    requestAnimationFrame(drawSparkles);
+  }
+
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+  resizeCanvas();
+  drawSparkles();
+})();
 </script>
 
 </body>
