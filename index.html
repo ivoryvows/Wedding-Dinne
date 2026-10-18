@@ -7,16 +7,16 @@
 <meta name="theme-color" content="#172849">
 
 <title>Wedding Dinner | Zainab &amp; Mizan</title>
-<meta name="description" content="Wedding Dinner of Zainab and Mizan — 26 November 2026.">
+<meta name="description" content="Wedding Dinner of Zainab and Mizan — Thursday, 26 November 2026.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Wedding Dinner | Zainab &amp; Mizan">
 <meta property="og:description" content="Thursday, 26 November 2026 · 6 PM to 10 PM · Ahmedabad">
-<meta property="og:url" content="https://ivoryvows.github.io/Royal-Sapphire/">
-<meta property="og:image" content="https://ivoryvows.github.io/Royal-Sapphire/msg.JPG">
-<meta property="og:image:secure_url" content="https://ivoryvows.github.io/Royal-Sapphire/msg.JPG">
+<meta property="og:url" content="https://ivoryvows.github.io/Wedding-Dinne/">
+<meta property="og:image" content="https://ivoryvows.github.io/Wedding-Dinne/msg.JPG">
+<meta property="og:image:secure_url" content="https://ivoryvows.github.io/Wedding-Dinne/msg.JPG">
 <meta property="og:image:alt" content="Zainab and Mizan Wedding Dinner Invitation">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ivoryvows.github.io/Royal-Sapphire/msg.JPG">
+<meta name="twitter:image" content="https://ivoryvows.github.io/Wedding-Dinne/msg.JPG">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,7 +75,7 @@ button, a {
   padding: 5px;
   border: 1px solid var(--gold);
   border-radius: 30px;
-  background: rgba(255,253,248,.95);
+  background: rgba(255,253,248,.96);
 }
 
 .language-switch button {
@@ -103,7 +103,7 @@ button, a {
   height: 42px;
   border: 1px solid var(--gold);
   border-radius: 50%;
-  background: rgba(255,253,248,.95);
+  background: rgba(255,253,248,.96);
   color: var(--navy);
   font-size: 19px;
   cursor: pointer;
@@ -147,7 +147,8 @@ button, a {
   z-index: 3;
   opacity: 1;
   cursor: pointer;
-  transition: opacity .7s ease;
+  transition: opacity .6s ease;
+  touch-action: manipulation;
 }
 
 #coverImage.fade {
@@ -235,7 +236,7 @@ main {
   padding: 42px 22px;
   border: 1px solid var(--gold);
   border-radius: 180px 180px 18px 18px;
-  background: rgba(255,253,248,.88);
+  background: rgba(255,253,248,.9);
   box-shadow: 0 15px 45px rgba(23,40,73,.12);
 }
 
@@ -463,12 +464,7 @@ body.hindi .dinner-card {
     <source src="blue..mp4" type="video/mp4">
   </video>
 
-  <img
-    id="coverImage"
-    src="env.jpg"
-    alt="Tap to open the invitation"
-    draggable="false"
-  >
+  <img id="coverImage" src="env.jpg" alt="Tap to open invitation" draggable="false">
 
   <div class="cover-shade"></div>
 
@@ -569,108 +565,116 @@ body.hindi .dinner-card {
 </main>
 
 <script>
-const body = document.body;
-const opening = document.getElementById("opening");
-const coverImage = document.getElementById("coverImage");
-const openingVideo = document.getElementById("openingVideo");
-const backgroundMusic = document.getElementById("backgroundMusic");
-const musicButton = document.getElementById("musicButton");
-const scrollHint = document.getElementById("scrollHint");
+(function () {
+  const body = document.body;
+  const opening = document.getElementById("opening");
+  const coverImage = document.getElementById("coverImage");
+  const openingVideo = document.getElementById("openingVideo");
+  const backgroundMusic = document.getElementById("backgroundMusic");
+  const musicButton = document.getElementById("musicButton");
+  const scrollHint = document.getElementById("scrollHint");
+  const englishButton = document.getElementById("englishButton");
+  const hindiButton = document.getElementById("hindiButton");
 
-const englishButton = document.getElementById("englishButton");
-const hindiButton = document.getElementById("hindiButton");
+  let started = false;
 
-let invitationStarted = false;
+  function startInvitation(event) {
+    if (event) {
+      event.preventDefault();
+    }
 
-function startInvitation() {
-  if (invitationStarted) return;
-  invitationStarted = true;
+    if (started) return;
+    started = true;
 
-  // Play music directly from the visitor's tap.
-  backgroundMusic.volume = 0.65;
-  backgroundMusic.play().then(() => {
-    musicButton.textContent = "♫";
-  }).catch((error) => {
-    console.log("Music could not start:", error);
-    musicButton.textContent = "♪";
-  });
+    // Start the music directly in response to the visitor's tap.
+    backgroundMusic.volume = 0.65;
 
-  // Hide the cover and play the video.
-  openingVideo.currentTime = 0;
+    const musicPromise = backgroundMusic.play();
+    if (musicPromise && typeof musicPromise.catch === "function") {
+      musicPromise.then(function () {
+        musicButton.textContent = "♫";
+      }).catch(function (error) {
+        console.error("Music playback error:", error);
+        musicButton.textContent = "♪";
+      });
+    }
 
-  openingVideo.play().then(() => {
+    // Start video on the same tap.
+    openingVideo.currentTime = 0;
+
+    const videoPromise = openingVideo.play();
+
+    if (videoPromise && typeof videoPromise.then === "function") {
+      videoPromise.then(function () {
+        coverImage.classList.add("fade");
+      }).catch(function (error) {
+        started = false;
+        console.error("Video playback error:", error);
+        alert("Video start nahi hui. Please blue..mp4 filename check karo.");
+      });
+    }
+  }
+
+  // Listen for both touch and click; ignore the duplicate click after touch.
+  coverImage.addEventListener("touchend", startInvitation, { passive: false });
+  coverImage.addEventListener("click", startInvitation);
+  opening.addEventListener("click", startInvitation);
+
+  openingVideo.addEventListener("playing", function () {
     coverImage.classList.add("fade");
-  }).catch((error) => {
-    invitationStarted = false;
-    console.error("Video playback error:", error);
-    alert("Video play nahi ho rahi. GitHub mein blue..mp4 ka exact filename check karo.");
   });
-}
 
-// The cover itself receives the tap.
-coverImage.addEventListener("click", function(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  startInvitation();
-});
+  openingVideo.addEventListener("ended", function () {
+    opening.classList.add("hidden");
+    body.classList.remove("locked");
+    scrollHint.classList.add("show");
 
-// Also support tapping anywhere on the opening screen.
-opening.addEventListener("click", function() {
-  startInvitation();
-});
+    window.setTimeout(function () {
+      scrollHint.classList.remove("show");
+    }, 6000);
+  });
 
-// Once the video starts, fade out the cover.
-openingVideo.addEventListener("playing", function() {
-  coverImage.classList.add("fade");
-});
-
-// When the video finishes, reveal the invitation page.
-openingVideo.addEventListener("ended", function() {
-  opening.classList.add("hidden");
-  body.classList.remove("locked");
-  scrollHint.classList.add("show");
-
-  setTimeout(() => {
-    scrollHint.classList.remove("show");
-  }, 6000);
-});
-
-// Music on/off button.
-musicButton.addEventListener("click", async function() {
-  if (backgroundMusic.paused) {
-    try {
-      await backgroundMusic.play();
-      musicButton.textContent = "♫";
-    } catch (error) {
+  musicButton.addEventListener("click", async function () {
+    if (backgroundMusic.paused) {
+      try {
+        await backgroundMusic.play();
+        musicButton.textContent = "♫";
+      } catch (error) {
+        console.error("Music playback error:", error);
+        musicButton.textContent = "♪";
+      }
+    } else {
+      backgroundMusic.pause();
       musicButton.textContent = "♪";
     }
-  } else {
-    backgroundMusic.pause();
-    musicButton.textContent = "♪";
-  }
-});
-
-// English and Hindi language switching.
-function setLanguage(language) {
-  const hindi = language === "hi";
-
-  document.documentElement.lang = hindi ? "hi" : "en";
-  body.classList.toggle("hindi", hindi);
-
-  document.querySelectorAll("[data-en][data-hi]").forEach(element => {
-    element.textContent = hindi
-      ? element.getAttribute("data-hi")
-      : element.getAttribute("data-en");
   });
 
-  englishButton.classList.toggle("active", !hindi);
-  hindiButton.classList.toggle("active", hindi);
-}
+  function setLanguage(language) {
+    const isHindi = language === "hi";
 
-englishButton.addEventListener("click", () => setLanguage("en"));
-hindiButton.addEventListener("click", () => setLanguage("hi"));
+    document.documentElement.lang = isHindi ? "hi" : "en";
+    body.classList.toggle("hindi", isHindi);
 
-setLanguage("en");
+    document.querySelectorAll("[data-en][data-hi]").forEach(function (element) {
+      element.textContent = isHindi
+        ? element.getAttribute("data-hi")
+        : element.getAttribute("data-en");
+    });
+
+    englishButton.classList.toggle("active", !isHindi);
+    hindiButton.classList.toggle("active", isHindi);
+  }
+
+  englishButton.addEventListener("click", function () {
+    setLanguage("en");
+  });
+
+  hindiButton.addEventListener("click", function () {
+    setLanguage("hi");
+  });
+
+  setLanguage("en");
+})();
 </script>
 
 </body>
