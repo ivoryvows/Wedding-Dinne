@@ -1,679 +1,1037 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="invitation-locked">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#172849">
+<meta name="theme-color" content="#244a80">
 
 <title>Wedding Dinner | Zainab &amp; Mizan</title>
-<meta name="description" content="Wedding Dinner of Zainab and Mizan — Thursday, 26 November 2026.">
-<meta property="og:type" content="website">
+<meta name="description" content="You are invited to celebrate the wedding dinner of Zainab and Mizan on 26 November 2026.">
+
 <meta property="og:title" content="Wedding Dinner | Zainab &amp; Mizan">
-<meta property="og:description" content="Thursday, 26 November 2026 · 6 PM to 10 PM · Ahmedabad">
-<meta property="og:url" content="https://ivoryvows.github.io/Wedding-Dinne/">
+<meta property="og:description" content="A special evening celebrating Zainab and Mizan.">
 <meta property="og:image" content="https://ivoryvows.github.io/Wedding-Dinne/msg.JPG">
-<meta property="og:image:secure_url" content="https://ivoryvows.github.io/Wedding-Dinne/msg.JPG">
-<meta property="og:image:alt" content="Zainab and Mizan Wedding Dinner Invitation">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ivoryvows.github.io/Wedding-Dinne/msg.JPG">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --navy: #172849;
-  --blue: #344f78;
-  --gold: #c7a96b;
-  --cream: #f8f3e9;
-  --white: #fffdf8;
+:root{
+  --navy:#17365d;
+  --deep-blue:#0b1938;
+  --blue:#315f98;
+  --pale:#eaf4ff;
+  --white:#fff;
+  --ink:#17365d;
+  --glass:rgba(255,255,255,.88);
 }
 
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+  min-height:100%;
+  background:#eaf4ff;
 }
 
-html {
-  scroll-behavior: smooth;
-  background: var(--navy);
+html.invitation-locked,
+body.invitation-locked{
+  height:100% !important;
+  overflow:hidden !important;
+  overscroll-behavior:none !important;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  color: var(--navy);
-  font-family: "Cormorant Garamond", serif;
-  text-align: center;
-  background: radial-gradient(
-    ellipse at top,
-    #fffdf8 0%,
-    #e7edf5 38%,
-    #b8c9df 68%,
-    #172849 100%
+body{
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+  font-family:'Montserrat',sans-serif;
+  color:var(--ink);
+  background:linear-gradient(
+    180deg,
+    #eaf4ff 0%,
+    #c8e0fa 12%,
+    #8fb8e7 24%,
+    #416fa8 36%,
+    #17365d 46%,
+    #091630 53%,
+    #17365d 61%,
+    #416fa8 72%,
+    #8fb8e7 84%,
+    #c8e0fa 93%,
+    #eaf4ff 100%
   );
-  overflow-x: hidden;
+  background-attachment:fixed;
 }
 
-body.locked {
-  height: 100vh;
-  overflow: hidden;
+body.invitation-locked{touch-action:none}
+
+button,input,textarea{font:inherit}
+img,video{max-width:100%}
+
+main{
+  width:100%;
+  max-width:520px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+  overflow:hidden;
 }
 
-button, a {
-  -webkit-tap-highlight-color: transparent;
+section{
+  position:relative;
+  padding:42px 22px;
+  text-align:center;
+  scroll-margin-top:12px;
 }
 
-.language-switch {
-  position: fixed;
-  z-index: 100;
-  top: 14px;
-  right: 14px;
-  display: flex;
-  gap: 5px;
-  padding: 5px;
-  border: 1px solid var(--gold);
-  border-radius: 30px;
-  background: rgba(255,253,248,.96);
+h1,h2,h3,p{margin-top:0}
+
+.script{font-family:'Great Vibes',cursive;font-weight:400}
+
+.serif{
+  font-family:'Cinzel',serif;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
 }
 
-.language-switch button {
-  border: 0;
-  border-radius: 20px;
-  padding: 8px 12px;
-  background: transparent;
-  color: var(--navy);
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  cursor: pointer;
+.section-title{
+  font:400 47px/1.12 'Great Vibes',cursive;
+  color:#fff;
+  text-shadow:0 2px 8px #243f6530;
+  margin:0 0 12px;
 }
 
-.language-switch button.active {
-  background: var(--navy);
-  color: white;
+.kicker{
+  font:500 10px/1.8 'Cinzel',serif;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#edf4fc;
+  margin:0 0 12px;
 }
 
-#musicButton {
-  position: fixed;
-  z-index: 110;
-  top: 14px;
-  left: 14px;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  background: rgba(255,253,248,.96);
-  color: var(--navy);
-  font-size: 19px;
-  cursor: pointer;
+.subtle{
+  font-size:12px;
+  line-height:1.8;
+  color:#f5f8ff;
 }
 
-#opening {
-  position: fixed;
-  z-index: 50;
-  inset: 0;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  background: var(--navy);
-  opacity: 1;
-  visibility: visible;
-  transition: opacity .9s ease, visibility .9s ease;
+.glass-card{
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:14px;
+  padding:26px 20px;
+  box-shadow:0 12px 32px rgba(28,45,89,.10);
+  backdrop-filter:blur(8px);
 }
 
-#opening.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+.divider{
+  width:56px;
+  height:1px;
+  border:0;
+  background:#b79b62;
+  margin:22px auto;
 }
 
-#openingVideo,
-#coverImage {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* LANGUAGE SWITCH */
+.lang-switch{
+  position:fixed;
+  top:12px;
+  right:12px;
+  z-index:50;
+  display:flex;
+  gap:2px;
+  padding:4px;
+  border:1px solid #c7d8eb;
+  border-radius:24px;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 4px 16px #1c2d5918;
 }
 
-#openingVideo {
-  z-index: 1;
-  background: var(--navy);
+.lang-switch button{
+  border:0;
+  background:transparent;
+  color:var(--navy);
+  border-radius:18px;
+  padding:7px 10px;
+  font-size:10px;
+  letter-spacing:.5px;
+  cursor:pointer;
 }
 
-#coverImage {
-  z-index: 3;
-  opacity: 1;
-  cursor: pointer;
-  transition: opacity .6s ease;
-  touch-action: manipulation;
+.lang-switch button.active{
+  background:var(--navy);
+  color:white;
 }
 
-#coverImage.fade {
-  opacity: 0;
-  pointer-events: none;
+/* ORIGINAL TWINKLING SPARKLES */
+#sparkCanvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:20;
 }
 
-.cover-shade {
-  position: absolute;
-  z-index: 4;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(12,25,48,.12),
-    transparent 45%,
-    rgba(12,25,48,.38)
-  );
+/* FULL-SCREEN OPENING */
+#opening{
+  padding:0;
+  width:100%;
+  height:100vh;
+  height:100svh;
+  height:100dvh;
+  min-height:100svh;
+  position:relative;
+  background:#091630;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  isolation:isolate;
 }
 
-.tap-message {
-  position: absolute;
-  z-index: 5;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 0 15px max(45px, env(safe-area-inset-bottom));
-  color: white;
-  font-size: 17px;
-  letter-spacing: 4px;
-  text-shadow: 0 2px 10px #000;
-  pointer-events: none;
-  animation: pulse 2s infinite;
+#coverButton{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  padding:0;
+  border:0;
+  background:#091630;
+  cursor:pointer;
+  z-index:2;
+  opacity:1;
+  transition:opacity .5s ease;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: .7; }
-  50% { opacity: 1; }
+#coverButton.fade-out{
+  opacity:0;
+  pointer-events:none;
 }
 
-#scrollHint {
-  position: fixed;
-  z-index: 45;
-  bottom: 24px;
-  left: 0;
-  right: 0;
-  color: white;
-  font-family: Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-shadow: 0 2px 8px #000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .5s;
+#coverButton img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
-#scrollHint.show {
-  opacity: 1;
+.cover-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,#0d1d3030,#0d1d3055);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  padding:0 20px 11vh;
+  color:#fff;
+  pointer-events:none;
 }
 
-#scrollHint .arrow {
-  display: block;
-  margin-top: 8px;
-  font-size: 24px;
-  animation: down 1.4s infinite;
+.cover-small{
+  font:11px 'Cinzel',serif;
+  letter-spacing:3px;
+  text-transform:uppercase;
 }
 
-@keyframes down {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+.tap-label{
+  font:400 42px 'Great Vibes',cursive;
+  margin-top:10px;
+  text-shadow:0 2px 12px #0005;
 }
 
-main {
-  width: 100%;
-  max-width: 620px;
-  margin: auto;
-  padding: 55px 20px 35px;
+#openingVideo{
+  display:none;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  background:#091630;
+  z-index:1;
+  opacity:0;
+  transition:opacity .5s ease;
 }
 
-.dinner-card {
-  position: relative;
-  overflow: hidden;
-  margin: 22px auto;
-  padding: 42px 22px;
-  border: 1px solid var(--gold);
-  border-radius: 180px 180px 18px 18px;
-  background: rgba(255,253,248,.9);
-  box-shadow: 0 15px 45px rgba(23,40,73,.12);
+#openingVideo.video-visible{opacity:1}
+
+#scrollHint{
+  display:none;
+  position:absolute;
+  bottom:22px;
+  left:0;
+  right:0;
+  color:#fff;
+  font:10px 'Cinzel',serif;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  text-shadow:0 1px 5px #000;
+  animation:bob 1.8s ease-in-out infinite;
+  pointer-events:none;
+  z-index:3;
 }
 
-.dinner-card::before {
-  content: "";
-  position: absolute;
-  inset: 9px;
-  border: 1px solid rgba(199,169,107,.48);
-  border-radius: inherit;
-  pointer-events: none;
+#scrollHint span{
+  display:block;
+  font-size:18px;
+  margin-top:5px;
 }
 
-.eyebrow,
-.section-label {
-  color: #9c7b3d;
-  font-size: 12px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+@keyframes bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(5px)}
 }
 
-.eyebrow {
-  position: relative;
-  margin: 0 0 20px;
+/* MUSIC BUTTON */
+#musicButton{
+  display:none;
+  position:fixed;
+  left:16px;
+  bottom:18px;
+  width:44px;
+  height:44px;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ffffffb0;
+  border-radius:50%;
+  background:rgba(11,25,56,.92);
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+  z-index:60;
+  box-shadow:0 4px 14px #0002;
+  -webkit-tap-highlight-color:transparent;
 }
 
-.names {
-  position: relative;
-  margin: 12px 0 22px;
-  color: var(--navy);
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(48px, 12vw, 68px);
-  line-height: 1.15;
-  font-weight: 400;
+/* FAMILY NAMES */
+#names{padding-top:65px;padding-bottom:55px}
+
+.names-card{
+  background:rgba(255,255,255,.91);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:15px;
+  padding:32px 18px;
+  box-shadow:0 12px 32px #09163020;
 }
 
-.ampersand {
-  display: block;
-  margin: 4px 0;
-  color: var(--gold);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 32px;
-  font-style: italic;
+.arabic{
+  font-family:serif;
+  font-size:27px;
+  line-height:1.9;
+  color:#b09151;
+  direction:rtl;
+  margin-bottom:12px;
 }
 
-.gold-line {
-  width: 90px;
-  height: 1px;
-  margin: 22px auto;
-  background: var(--gold);
+.bismillah{font-size:24px}
+
+.insha{
+  font:italic 18px 'Cormorant Garamond',serif;
+  color:#6b7f9a;
+  margin:8px 0 25px;
 }
 
-.intro {
-  position: relative;
-  max-width: 350px;
-  margin: 0 auto;
-  font-size: 21px;
-  line-height: 1.6;
+.family-line{
+  font:12px/1.9 'Cinzel',serif;
+  letter-spacing:.35px;
+  color:#586981;
 }
 
-.section-card {
-  position: relative;
-  margin: 24px auto;
-  padding: 32px 20px;
-  border: 1px solid rgba(199,169,107,.85);
-  border-radius: 18px;
-  background: rgba(255,253,248,.9);
-  box-shadow: 0 12px 35px rgba(23,40,73,.1);
+.person-name{
+  font:400 43px/1.2 'Great Vibes',cursive;
+  color:#17365d;
+  margin:9px 0 8px;
 }
 
-.section-label {
-  margin: 0 0 14px;
+.and-line{
+  font:italic 22px 'Cormorant Garamond',serif;
+  color:#b09151;
+  margin:18px 0;
 }
 
-.section-title {
-  margin: 0;
-  font-size: clamp(29px, 7vw, 42px);
-  line-height: 1.25;
-  font-weight: 500;
+.gold-line{
+  height:1px;
+  width:70px;
+  background:#b79b62;
+  margin:18px auto;
 }
 
-.date-number {
-  margin: 12px 0;
-  color: var(--blue);
-  font-size: clamp(40px, 10vw, 56px);
-  line-height: 1.1;
+/* EVENT DATE AND TIME */
+#eventDetails{padding-top:30px;padding-bottom:48px}
+
+.event-card{
+  background:linear-gradient(160deg,#fff 0%,#f5f7fb 100%);
+  border:1px solid #d8c69f;
+  border-radius:16px;
+  padding:32px 20px;
+  box-shadow:0 14px 36px rgba(9,22,48,.18);
 }
 
-.date-detail {
-  margin: 0;
-  font-size: 22px;
-  letter-spacing: 1px;
+.event-heading{
+  font:400 43px/1.2 'Great Vibes',cursive;
+  color:#17365d;
+  margin:12px 0;
 }
 
-.time-detail {
-  margin: 12px 0;
-  color: var(--blue);
-  font-size: clamp(29px, 8vw, 43px);
+.event-label{
+  font:10px/1.8 'Cinzel',serif;
+  letter-spacing:2px;
+  color:#8c774d;
+  text-transform:uppercase;
 }
 
-.venue-name {
-  margin: 8px 0 15px;
-  font-size: 32px;
-  font-weight: 600;
+.event-date{
+  font:500 15px/1.9 'Cinzel',serif;
+  color:#17365d;
+  margin:14px 0 5px;
 }
 
-.address {
-  max-width: 390px;
-  margin: 0 auto 20px;
-  font-size: 19px;
-  line-height: 1.55;
+.event-time{
+  font:500 14px/1.9 'Montserrat',sans-serif;
+  color:#526782;
+  letter-spacing:.5px;
 }
 
-.map-frame {
-  display: block;
-  width: 100%;
-  height: 245px;
-  margin: 18px auto;
-  border: 1px solid var(--gold);
-  border-radius: 12px;
+.event-type{
+  font:400 29px/1.4 'Great Vibes',cursive;
+  color:#17365d;
+  margin:18px 0 5px;
 }
 
-.map-link {
-  display: inline-block;
-  margin-top: 5px;
-  padding: 12px 21px;
-  border: 1px solid var(--gold);
-  border-radius: 30px;
-  color: var(--navy);
-  background: var(--cream);
-  text-decoration: none;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: 1px;
+.event-note{
+  font:italic 17px/1.7 'Cormorant Garamond',serif;
+  color:#65748a;
+  margin:16px auto 0;
 }
 
-.bow-section {
-  padding: 10px 0;
+/* VENUE */
+#venue{padding-top:35px;padding-bottom:48px}
+
+.venue-card{
+  background:#fff;
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:14px;
+  padding:27px 18px;
+  box-shadow:0 12px 30px #1c2d5918;
 }
 
-.bow-image {
-  display: block;
-  width: min(210px, 62%);
-  max-height: 220px;
-  margin: 10px auto;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 10px #17284916);
+.venue-title{
+  font:400 39px/1.2 'Great Vibes',cursive;
+  color:var(--navy);
+  margin:8px 0 15px;
 }
 
-.closing-card {
-  margin: 25px auto 18px;
-  padding: 35px 18px;
-  border-top: 1px solid var(--gold);
-  border-bottom: 1px solid var(--gold);
+.address-text{
+  font:12px/1.9 'Cinzel',serif;
+  color:#444;
+  margin-bottom:20px;
 }
 
-.closing-script {
-  margin: 0 0 8px;
-  font-family: "Great Vibes", cursive;
-  font-size: 43px;
+.map-box{
+  height:210px;
+  border-radius:9px;
+  overflow:hidden;
+  border:1px solid #d0dbe8;
+  margin-bottom:20px;
 }
 
-.family-name {
-  margin: 0;
-  font-size: 27px;
-  letter-spacing: 2px;
+.map-box iframe{width:100%;height:100%;border:0}
+
+.outline-btn{
+  display:inline-block;
+  text-decoration:none;
+  border:1px solid var(--navy);
+  color:var(--navy);
+  background:transparent;
+  border-radius:22px;
+  padding:12px 20px;
+  font:500 10px 'Cinzel',serif;
+  letter-spacing:1.3px;
 }
 
-.footer {
-  padding: 12px 0 24px;
-  color: rgba(255,253,248,.95);
-  font-family: Arial, sans-serif;
-  font-size: 10px;
-  letter-spacing: 3px;
+/* CLOSING */
+#closing{padding-top:45px;padding-bottom:28px}
+
+.closing-card{
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:15px;
+  padding:28px 18px 32px;
+  box-shadow:0 12px 32px rgba(9,22,48,.12);
 }
 
-body.hindi,
-body.hindi .section-card,
-body.hindi .dinner-card {
-  font-family: "Noto Sans Devanagari", sans-serif;
+.bow-image{
+  width:140px;
+  max-height:190px;
+  object-fit:contain;
+  margin:0 auto 15px;
+  display:block;
 }
 
-@media (max-width: 380px) {
-  main {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  .dinner-card {
-    padding: 36px 17px;
-  }
-
-  .section-card {
-    padding: 27px 15px;
-  }
-
-  .map-frame {
-    height: 215px;
-  }
+.closing-arabic{
+  font-family:serif;
+  font-size:33px;
+  line-height:1.8;
+  color:#b09151;
+  direction:rtl;
+  margin:0 0 16px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    scroll-behavior: auto !important;
-  }
+.regards{
+  font:italic 21px 'Cormorant Garamond',serif;
+  color:#63738a;
+  margin:10px 0;
+}
+
+.family-ending{
+  font:400 39px 'Great Vibes',cursive;
+  color:#17365d;
+  margin:8px 0 15px;
+}
+
+.save-date{
+  font:10px 'Cinzel',serif;
+  letter-spacing:3px;
+  color:#8c774d;
+  margin-top:22px;
+}
+
+footer{
+  padding:22px;
+  text-align:center;
+  font-size:10px;
+  letter-spacing:1px;
+  color:#eaf2fc;
+}
+
+@media(min-width:700px){
+  main{box-shadow:0 0 50px #172d4b18}
+  .section-title{font-size:52px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  #scrollHint{animation:none}
 }
 </style>
 </head>
 
-<body class="locked">
+<body class="invitation-locked">
 
-<div class="language-switch">
-  <button id="englishButton" class="active" type="button">English</button>
-  <button id="hindiButton" type="button">हिंदी</button>
-</div>
+<canvas id="sparkCanvas" aria-hidden="true"></canvas>
 
-<button id="musicButton" type="button" aria-label="Toggle music">♫</button>
-
-<audio id="backgroundMusic" loop preload="auto">
-  <source src="dulha.mp3" type="audio/mpeg">
-</audio>
-
-<section id="opening" aria-label="Invitation cover">
-  <video id="openingVideo" playsinline webkit-playsinline preload="auto">
-    <source src="blue..mp4" type="video/mp4">
-  </video>
-
-  <img id="coverImage" src="env.jpg" alt="Tap to open invitation" draggable="false">
-
-  <div class="cover-shade"></div>
-
-  <div class="tap-message">
-    <span data-en="TAP TO OPEN" data-hi="खोलने के लिए टैप करें">TAP TO OPEN</span>
-  </div>
-</section>
-
-<div id="scrollHint">
-  <span data-en="SCROLL TO DISCOVER" data-hi="आगे देखने के लिए नीचे जाएँ">SCROLL TO DISCOVER</span>
-  <span class="arrow">⌄</span>
+<div class="lang-switch" aria-label="Choose language">
+  <button type="button" class="active" data-lang="en">EN</button>
+  <button type="button" data-lang="hi">हिन्दी</button>
 </div>
 
 <main>
-  <section class="dinner-card">
-    <p class="eyebrow" data-en="Wedding Dinner" data-hi="शादी की दावत">Wedding Dinner</p>
 
-    <h1 class="names">
-      Zainab
-      <span class="ampersand">&amp;</span>
-      Mizan
-    </h1>
+  <!-- FULL-SCREEN COVER AND VIDEO -->
+  <section id="opening" aria-label="Open invitation">
 
-    <div class="gold-line"></div>
+    <button id="coverButton" type="button" aria-label="Tap to open invitation">
+      <img src="env.jpg" alt="Wedding invitation cover" fetchpriority="high">
+      <span class="cover-overlay">
+        <span class="cover-small"
+          data-en="YOU ARE INVITED"
+          data-hi="आप सादर आमंत्रित हैं">YOU ARE INVITED</span>
 
-    <p class="intro"
-       data-en="Together with their families, we warmly invite you to celebrate this special evening with us."
-       data-hi="अपने परिवारों के साथ, हम आपको इस खास शाम की खुशियों में शामिल होने के लिए सादर आमंत्रित करते हैं।">
-      Together with their families, we warmly invite you to celebrate this special evening with us.
+        <span class="tap-label"
+          data-en="Tap to Open"
+          data-hi="खोलने के लिए टैप करें">Tap to Open</span>
+      </span>
+    </button>
+
+    <video id="openingVideo"
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      poster="env.jpg">
+      <source src="blue..mp4" type="video/mp4">
+      Your browser does not support this video.
+    </video>
+
+    <div id="scrollHint">
+      <span data-en="Scroll to Discover" data-hi="आगे देखने के लिए स्क्रॉल करें">Scroll to Discover</span>
+      <span>⌄</span>
+    </div>
+
+  </section>
+
+  <!-- BRIDE AND GROOM NAMES -->
+  <section id="names">
+
+    <div class="names-card">
+
+      <div class="arabic bismillah" lang="ar" dir="rtl">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+      </div>
+
+      <p class="insha"
+        data-en="Insha’Allah"
+        data-hi="इंशाअल्लाह">Insha’Allah</p>
+
+      <p class="family-line"
+        data-en="Daughter of"
+        data-hi="सुपुत्री">Daughter of</p>
+
+      <p class="family-line">Mrs Neelam &amp; Mr Minhaz Kanani</p>
+
+      <h1 class="person-name">Zainab</h1>
+
+      <div class="gold-line"></div>
+
+      <div class="and-line"
+        data-en="with"
+        data-hi="और">with</div>
+
+      <p class="family-line"
+        data-en="Son of"
+        data-hi="सुपुत्र">Son of</p>
+
+      <p class="family-line">Mrs Fazila &amp; Mr Gulamabbas Hirani</p>
+
+      <h2 class="person-name">Mizan</h2>
+
+      <hr class="divider">
+
+      <p class="family-line"
+        data-en="Request the pleasure of your company"
+        data-hi="आपकी गरिमामयी उपस्थिति की प्रार्थना करते हैं">
+        Request the pleasure of your company
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- EVENT DATE AND TIME -->
+  <section id="eventDetails">
+
+    <p class="kicker"
+      data-en="With the blessings of Allah"
+      data-hi="अल्लाह की रहमत और बरकत के साथ">
+      With the blessings of Allah
     </p>
+
+    <div class="event-card">
+
+      <div class="arabic" lang="ar" dir="rtl">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+      </div>
+
+      <p class="insha"
+        data-en="Insha’Allah"
+        data-hi="इंशाअल्लाह">Insha’Allah</p>
+
+      <div class="event-label"
+        data-en="Together with our families"
+        data-hi="अपने परिवारों के साथ">
+        Together with our families
+      </div>
+
+      <div class="event-heading"
+        data-en="Zainab &amp; Mizan"
+        data-hi="ज़ैनब और मिज़ान">
+        Zainab &amp; Mizan
+      </div>
+
+      <hr class="divider">
+
+      <div class="event-label"
+        data-en="Cordially invite you to their"
+        data-hi="आपको सादर आमंत्रित करते हैं">
+        Cordially invite you to their
+      </div>
+
+      <div class="event-type"
+        data-en="Wedding Dinner"
+        data-hi="वेडिंग डिनर">Wedding Dinner</div>
+
+      <div class="gold-line"></div>
+
+      <div class="event-date"
+        data-en="Thursday, 26th November 2026"
+        data-hi="गुरुवार, 26 नवंबर 2026">
+        Thursday, 26th November 2026
+      </div>
+
+      <div class="event-time"
+        data-en="6:00 PM – 10:00 PM"
+        data-hi="शाम 6:00 बजे – रात 10:00 बजे">
+        6:00 PM – 10:00 PM
+      </div>
+
+      <p class="event-note"
+        data-en="We would be delighted to celebrate this special evening with you."
+        data-hi="इस खास शाम को आपके साथ मनाकर हमें बेहद खुशी होगी।">
+        We would be delighted to celebrate this special evening with you.
+      </p>
+
+    </div>
+
   </section>
 
-  <section class="section-card">
-    <p class="section-label" data-en="Save the Date" data-hi="तारीख़ याद रखें">Save the Date</p>
-    <h2 class="section-title" data-en="Thursday" data-hi="गुरुवार">Thursday</h2>
-    <p class="date-number" data-en="26th" data-hi="26">26th</p>
-    <p class="date-detail" data-en="November 2026" data-hi="नवंबर 2026">November 2026</p>
-  </section>
+  <!-- VENUE AND GOOGLE MAP -->
+  <section id="venue">
 
-  <section class="section-card">
-    <p class="section-label" data-en="The Celebration" data-hi="समारोह का समय">The Celebration</p>
-    <h2 class="section-title" data-en="Time" data-hi="समय">Time</h2>
-    <p class="time-detail">6:00 PM – 10:00 PM</p>
-    <p class="intro"
-       data-en="We look forward to celebrating with you."
-       data-hi="हमें आपके साथ इस खुशी को मनाने का इंतज़ार रहेगा।">
-      We look forward to celebrating with you.
+    <p class="kicker"
+      data-en="We look forward to welcoming you"
+      data-hi="आपका स्वागत करने के लिए उत्सुक हैं">
+      We look forward to welcoming you
     </p>
+
+    <div class="section-title"
+      data-en="The Venue"
+      data-hi="कार्यक्रम स्थल">The Venue</div>
+
+    <div class="venue-card">
+
+      <div class="venue-title">Brooks Restaurant</div>
+
+      <hr class="divider">
+
+      <div class="address-text">
+        Mansarovar Rd,<br>
+        beside Kataria Maruti Suzuki Service Center,<br>
+        Tragad, Ahmedabad,<br>
+        Gujarat 382470
+      </div>
+
+      <div class="map-box">
+        <iframe
+          title="Map to Brooks Restaurant, Tragad, Ahmedabad"
+          src="https://maps.google.com/maps?q=Brooks%20Restaurant%2C%20Mansarovar%20Road%2C%20Tragad%2C%20Ahmedabad%2C%20Gujarat%20382470&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <a
+        class="outline-btn"
+        href="https://www.google.com/maps/search/?api=1&amp;query=Brooks+Restaurant+Mansarovar+Road+Tragad+Ahmedabad+Gujarat+382470"
+        target="_blank"
+        rel="noopener"
+        data-en="VIEW LOCATION"
+        data-hi="लोकेशन देखें">
+        VIEW LOCATION
+      </a>
+
+    </div>
+
   </section>
 
-  <section class="section-card">
-    <p class="section-label" data-en="Join Us At" data-hi="कार्यक्रम का स्थान">Join Us At</p>
+  <!-- CLOSING -->
+  <section id="closing">
 
-    <h2 class="venue-name"
-        data-en="Brooks Restaurant"
-        data-hi="ब्रूक्स रेस्टोरेंट">Brooks Restaurant</h2>
+    <div class="closing-card">
 
-    <p class="address"
-       data-en="Mansarovar Rd, beside Kataria Maruti Suzuki Service Center, Tragad, Ahmedabad, Gujarat 382470"
-       data-hi="मानसरोवर रोड, कटारिया मारुति सुज़ुकी सर्विस सेंटर के पास, त्रागड़, अहमदाबाद, गुजरात 382470">
-      Mansarovar Rd, beside Kataria Maruti Suzuki Service Center, Tragad, Ahmedabad, Gujarat 382470
-    </p>
+      <img class="bow-image" src="bow.PNG" alt="Decorative blue bow">
 
-    <iframe
-      class="map-frame"
-      title="Brooks Restaurant map"
-      src="https://maps.google.com/maps?q=Brooks%20Restaurant%2C%20Mansarovar%20Rd%2C%20Tragad%2C%20Ahmedabad%2C%20Gujarat%20382470&z=15&output=embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      allowfullscreen>
-    </iframe>
+      <div class="closing-arabic" lang="ar" dir="rtl">
+        الْحَمْدُ لِلَّٰهِ
+      </div>
 
-    <a
-      class="map-link"
-      href="https://www.google.com/maps/search/?api=1&query=Brooks+Restaurant%2C+Mansarovar+Rd%2C+Tragad%2C+Ahmedabad%2C+Gujarat+382470"
-      target="_blank"
-      rel="noopener noreferrer"
-      data-en="OPEN IN GOOGLE MAPS"
-      data-hi="गूगल मैप्स पर देखें">
-      OPEN IN GOOGLE MAPS
-    </a>
+      <div class="regards"
+        data-en="With regards,"
+        data-hi="सादर,">With regards,</div>
+
+      <div class="family-ending">Kanani Family</div>
+
+      <hr class="divider">
+
+      <div class="save-date"
+        data-en="SAVE THE DATE"
+        data-hi="तारीख़ याद रखें">SAVE THE DATE</div>
+
+    </div>
+
   </section>
 
-  <section class="bow-section">
-    <img class="bow-image" src="bow.PNG" alt="">
-  </section>
-
-  <section class="closing-card">
-    <p class="closing-script" data-en="With regards" data-hi="सादर">With regards</p>
-    <p class="family-name" data-en="KANANI FAMILY" data-hi="कनानी परिवार">KANANI FAMILY</p>
-  </section>
-
-  <footer class="footer"
-          data-en="A SPECIAL EVENING · A BEAUTIFUL MEMORY"
-          data-hi="एक खास शाम · एक खूबसूरत याद">
-    A SPECIAL EVENING · A BEAUTIFUL MEMORY
+  <footer>
+    <span data-en="Made with love" data-hi="प्यार से बनाया गया">Made with love</span>
+    · <span class="serif">Ivory Vows</span>
   </footer>
+
 </main>
 
+<!-- BACKGROUND MUSIC -->
+<audio id="backgroundMusic" preload="auto" loop playsinline>
+  <source src="dulha.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicButton" type="button"
+  aria-label="Pause music"
+  title="Pause / Play music">♫</button>
+
 <script>
-(function () {
+(function(){
+
+  const html = document.documentElement;
   const body = document.body;
-  const opening = document.getElementById("opening");
-  const coverImage = document.getElementById("coverImage");
-  const openingVideo = document.getElementById("openingVideo");
-  const backgroundMusic = document.getElementById("backgroundMusic");
-  const musicButton = document.getElementById("musicButton");
-  const scrollHint = document.getElementById("scrollHint");
-  const englishButton = document.getElementById("englishButton");
-  const hindiButton = document.getElementById("hindiButton");
+  const cover = document.getElementById('coverButton');
+  const video = document.getElementById('openingVideo');
+  const music = document.getElementById('backgroundMusic');
+  const musicButton = document.getElementById('musicButton');
+  const scrollHint = document.getElementById('scrollHint');
 
-  let started = false;
+  let opened = false;
+  let videoFinished = false;
 
-  function startInvitation(event) {
-    if (event) {
+  /* Lock scrolling until the intro video finishes. */
+  function preventPageScroll(event){
+    if(!videoFinished) event.preventDefault();
+  }
+
+  function preventScrollKeys(event){
+    if(videoFinished) return;
+
+    const blockedKeys = [
+      'ArrowUp','ArrowDown','ArrowLeft','ArrowRight',
+      'PageUp','PageDown','Home','End',' '
+    ];
+
+    if(
+      blockedKeys.includes(event.key) &&
+      !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)
+    ){
       event.preventDefault();
     }
+  }
 
-    if (started) return;
-    started = true;
+  window.addEventListener('wheel',preventPageScroll,{passive:false});
+  window.addEventListener('touchmove',preventPageScroll,{passive:false});
+  window.addEventListener('keydown',preventScrollKeys,{passive:false});
 
-    // Start the music directly in response to the visitor's tap.
-    backgroundMusic.volume = 0.65;
+  function lockScrolling(){
+    videoFinished = false;
+    html.classList.add('invitation-locked');
+    body.classList.add('invitation-locked');
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+    body.style.touchAction = 'none';
+    scrollHint.style.display = 'none';
+  }
 
-    const musicPromise = backgroundMusic.play();
-    if (musicPromise && typeof musicPromise.catch === "function") {
-      musicPromise.then(function () {
-        musicButton.textContent = "♫";
-      }).catch(function (error) {
-        console.error("Music playback error:", error);
-        musicButton.textContent = "♪";
+  function unlockScrolling(){
+    videoFinished = true;
+    html.classList.remove('invitation-locked');
+    body.classList.remove('invitation-locked');
+    html.style.overflow = '';
+    body.style.overflow = '';
+    body.style.touchAction = '';
+    scrollHint.style.display = 'block';
+  }
+
+  function updateMusicButton(){
+    if(music.paused){
+      musicButton.textContent = '♫';
+      musicButton.setAttribute('aria-label','Play music');
+      musicButton.title = 'Play music';
+    }else{
+      musicButton.textContent = 'Ⅱ';
+      musicButton.setAttribute('aria-label','Pause music');
+      musicButton.title = 'Pause music';
+    }
+  }
+
+  lockScrolling();
+
+  /* Start video and music from the same cover tap. */
+  function openInvitation(){
+    if(opened) return;
+    opened = true;
+
+    lockScrolling();
+
+    cover.style.display = 'block';
+    cover.classList.remove('fade-out');
+
+    video.style.display = 'block';
+    video.classList.remove('video-visible');
+
+    musicButton.style.display = 'flex';
+    scrollHint.style.display = 'none';
+
+    music.volume = 1;
+    music.muted = false;
+
+    const musicPromise = music.play();
+
+    if(musicPromise && typeof musicPromise.then === 'function'){
+      musicPromise.then(updateMusicButton).catch(function(error){
+        console.warn('Music could not start. Check dulha.mp3:',error);
+        updateMusicButton();
       });
     }
 
-    // Start video on the same tap.
-    openingVideo.currentTime = 0;
+    video.muted = true;
+    video.playsInline = true;
 
-    const videoPromise = openingVideo.play();
+    try{
+      video.currentTime = 0;
+    }catch(error){}
 
-    if (videoPromise && typeof videoPromise.then === "function") {
-      videoPromise.then(function () {
-        coverImage.classList.add("fade");
-      }).catch(function (error) {
-        started = false;
-        console.error("Video playback error:", error);
-        alert("Video start nahi hui. Please blue..mp4 filename check karo.");
+    const videoPromise = video.play();
+
+    if(videoPromise && typeof videoPromise.then === 'function'){
+      videoPromise.catch(function(error){
+        console.error('Video could not start. Check blue..mp4:',error);
+        /*
+          If video fails, keep the cover visible and scrolling locked
+          instead of showing a blank screen.
+        */
       });
     }
   }
 
-  // Listen for both touch and click; ignore the duplicate click after touch.
-  coverImage.addEventListener("touchend", startInvitation, { passive: false });
-  coverImage.addEventListener("click", startInvitation);
-  opening.addEventListener("click", startInvitation);
+  /* One event handler prevents the cover tap from firing twice. */
+  cover.addEventListener('click',openInvitation);
 
-  openingVideo.addEventListener("playing", function () {
-    coverImage.classList.add("fade");
+  /* Fade the cover only after the video actually starts. */
+  video.addEventListener('playing',function(){
+    video.classList.add('video-visible');
+    cover.classList.add('fade-out');
   });
 
-  openingVideo.addEventListener("ended", function () {
-    opening.classList.add("hidden");
-    body.classList.remove("locked");
-    scrollHint.classList.add("show");
-
-    window.setTimeout(function () {
-      scrollHint.classList.remove("show");
-    }, 6000);
+  /*
+    On video end, pause at the final frame.
+    Do not hide the video or reset currentTime.
+  */
+  video.addEventListener('ended',function(){
+    video.pause();
+    unlockScrolling();
   });
 
-  musicButton.addEventListener("click", async function () {
-    if (backgroundMusic.paused) {
-      try {
-        await backgroundMusic.play();
-        musicButton.textContent = "♫";
-      } catch (error) {
-        console.error("Music playback error:", error);
-        musicButton.textContent = "♪";
+  video.addEventListener('error',function(){
+    console.error('Could not load blue..mp4. Check filename, file location and MP4 encoding.');
+  });
+
+  /* Music toggle. */
+  musicButton.addEventListener('click',function(){
+    if(music.paused){
+      music.muted = false;
+
+      const promise = music.play();
+
+      if(promise && typeof promise.then === 'function'){
+        promise.then(updateMusicButton).catch(function(error){
+          console.error('Could not resume dulha.mp3:',error);
+          updateMusicButton();
+        });
       }
-    } else {
-      backgroundMusic.pause();
-      musicButton.textContent = "♪";
+    }else{
+      music.pause();
+      updateMusicButton();
     }
   });
 
-  function setLanguage(language) {
-    const isHindi = language === "hi";
+  music.addEventListener('play',updateMusicButton);
+  music.addEventListener('pause',updateMusicButton);
 
-    document.documentElement.lang = isHindi ? "hi" : "en";
-    body.classList.toggle("hindi", isHindi);
+  /* ENGLISH / HINDI LANGUAGE SWITCH */
+  const langButtons = document.querySelectorAll('.lang-switch button');
 
-    document.querySelectorAll("[data-en][data-hi]").forEach(function (element) {
-      element.textContent = isHindi
-        ? element.getAttribute("data-hi")
-        : element.getAttribute("data-en");
+  function setLanguage(lang){
+    html.lang = lang === 'hi' ? 'hi' : 'en';
+
+    document.querySelectorAll('[data-en][data-hi]').forEach(function(el){
+      el.textContent = el.dataset[lang];
     });
 
-    englishButton.classList.toggle("active", !isHindi);
-    hindiButton.classList.toggle("active", isHindi);
+    langButtons.forEach(function(btn){
+      btn.classList.toggle('active',btn.dataset.lang === lang);
+    });
   }
 
-  englishButton.addEventListener("click", function () {
-    setLanguage("en");
+  langButtons.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      setLanguage(btn.dataset.lang);
+    });
   });
 
-  hindiButton.addEventListener("click", function () {
-    setLanguage("hi");
-  });
+  /* TWINKLING WHITE SPARKLES — original effect preserved. */
+  const canvas = document.getElementById('sparkCanvas');
+  const ctx = canvas.getContext('2d');
 
-  setLanguage("en");
+  let width = 0;
+  let height = 0;
+  let ratio = 1;
+  let sparks = [];
+
+  function resize(){
+    ratio = Math.min(window.devicePixelRatio || 1,2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = Math.floor(width*ratio);
+    canvas.height = Math.floor(height*ratio);
+    canvas.style.width = width+'px';
+    canvas.style.height = height+'px';
+
+    ctx.setTransform(ratio,0,0,ratio,0,0);
+
+    const count = Math.min(65,Math.max(28,Math.floor(width/8)));
+
+    sparks = Array.from({length:count},function(){
+      return {
+        x:Math.random()*width,
+        y:Math.random()*height,
+        speed:Math.random()*0.25+0.08,
+        drift:(Math.random()-0.5)*0.15,
+        phase:Math.random()*Math.PI*2
+      };
+    });
+  }
+
+  function animateSparks(){
+    ctx.clearRect(0,0,width,height);
+
+    const time = performance.now()/1000;
+
+    for(let i=0;i<sparks.length;i++){
+      const s = sparks[i];
+
+      const twinkle = (Math.sin(time*2.2+s.phase)+1)/2;
+      const alpha = 0.18+twinkle*0.78;
+      const radius = 0.7+twinkle*0.9;
+
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,radius,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,'+alpha+')';
+      ctx.shadowBlur = 2+twinkle*7;
+      ctx.shadowColor = '#ffffff';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      s.y += s.speed;
+      s.x += s.drift;
+
+      if(s.y > height+3){
+        s.y = -3;
+        s.x = Math.random()*width;
+      }
+
+      if(s.x < -3) s.x = width+3;
+      if(s.x > width+3) s.x = -3;
+    }
+
+    requestAnimationFrame(animateSparks);
+  }
+
+  resize();
+  window.addEventListener('resize',resize);
+  animateSparks();
+
 })();
 </script>
 
