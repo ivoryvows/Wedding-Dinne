@@ -45,9 +45,14 @@ body {
   min-height: 100vh;
   color: var(--navy);
   font-family: "Cormorant Garamond", serif;
-  background:
-    radial-gradient(ellipse at top, #fffdf8 0%, #e7edf5 38%, #b8c9df 68%, #172849 100%);
   text-align: center;
+  background: radial-gradient(
+    ellipse at top,
+    #fffdf8 0%,
+    #e7edf5 38%,
+    #b8c9df 68%,
+    #172849 100%
+  );
   overflow-x: hidden;
 }
 
@@ -60,49 +65,61 @@ button, a {
   -webkit-tap-highlight-color: transparent;
 }
 
-button {
-  font: inherit;
-}
-
 .language-switch {
   position: fixed;
+  z-index: 100;
   top: 14px;
   right: 14px;
-  z-index: 100;
   display: flex;
   gap: 5px;
   padding: 5px;
-  border: 1px solid rgba(199,169,107,.8);
+  border: 1px solid var(--gold);
   border-radius: 30px;
-  background: rgba(255,253,248,.92);
-  box-shadow: 0 4px 18px #17284920;
+  background: rgba(255,253,248,.95);
 }
 
 .language-switch button {
   border: 0;
   border-radius: 20px;
-  padding: 7px 12px;
-  color: var(--navy);
+  padding: 8px 12px;
   background: transparent;
-  cursor: pointer;
+  color: var(--navy);
   font-family: Arial, sans-serif;
   font-size: 12px;
+  cursor: pointer;
 }
 
 .language-switch button.active {
-  color: white;
   background: var(--navy);
+  color: white;
+}
+
+#musicButton {
+  position: fixed;
+  z-index: 110;
+  top: 14px;
+  left: 14px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: rgba(255,253,248,.95);
+  color: var(--navy);
+  font-size: 19px;
+  cursor: pointer;
 }
 
 #opening {
   position: fixed;
-  inset: 0;
   z-index: 50;
+  inset: 0;
+  overflow: hidden;
   display: grid;
   place-items: center;
-  overflow: hidden;
   background: var(--navy);
-  transition: opacity 1s ease, visibility 1s ease;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .9s ease, visibility .9s ease;
 }
 
 #opening.hidden {
@@ -111,24 +128,14 @@ button {
   pointer-events: none;
 }
 
-#coverImage,
-#openingVideo {
+#openingVideo,
+#coverImage {
   position: absolute;
   inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-#coverImage {
-  z-index: 2;
-  cursor: pointer;
-  transition: opacity .8s ease;
-}
-
-#coverImage.fade {
-  opacity: 0;
-  pointer-events: none;
 }
 
 #openingVideo {
@@ -136,35 +143,49 @@ button {
   background: var(--navy);
 }
 
+#coverImage {
+  z-index: 3;
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity .7s ease;
+}
+
+#coverImage.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .cover-shade {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(12,25,48,.10),
+    rgba(12,25,48,.12),
     transparent 45%,
-    rgba(12,25,48,.40)
+    rgba(12,25,48,.38)
   );
 }
 
 .tap-message {
   position: absolute;
-  z-index: 4;
-  left: 15px;
-  right: 15px;
-  bottom: max(45px, env(safe-area-inset-bottom));
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 15px max(45px, env(safe-area-inset-bottom));
   color: white;
-  font-size: 18px;
-  letter-spacing: 3px;
+  font-size: 17px;
+  letter-spacing: 4px;
   text-shadow: 0 2px 10px #000;
   pointer-events: none;
-  animation: gentlePulse 2s infinite;
+  animation: pulse 2s infinite;
 }
 
-@keyframes gentlePulse {
-  0%, 100% { opacity: .75; }
+@keyframes pulse {
+  0%, 100% { opacity: .7; }
   50% { opacity: 1; }
 }
 
@@ -174,7 +195,7 @@ button {
   bottom: 24px;
   left: 0;
   right: 0;
-  color: var(--white);
+  color: white;
   font-family: Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 4px;
@@ -188,32 +209,16 @@ button {
   opacity: 1;
 }
 
-#scrollHint span {
+#scrollHint .arrow {
   display: block;
   margin-top: 8px;
-  font-size: 23px;
-  animation: moveDown 1.4s infinite;
+  font-size: 24px;
+  animation: down 1.4s infinite;
 }
 
-@keyframes moveDown {
+@keyframes down {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(6px); }
-}
-
-#musicButton {
-  position: fixed;
-  z-index: 110;
-  left: 15px;
-  top: 14px;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--gold);
-  color: var(--navy);
-  background: rgba(255,253,248,.94);
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 4px 18px #17284920;
 }
 
 main {
@@ -227,10 +232,10 @@ main {
   position: relative;
   overflow: hidden;
   margin: 22px auto;
-  padding: 38px 22px;
+  padding: 42px 22px;
   border: 1px solid var(--gold);
   border-radius: 180px 180px 18px 18px;
-  background: rgba(255,253,248,.86);
+  background: rgba(255,253,248,.88);
   box-shadow: 0 15px 45px rgba(23,40,73,.12);
 }
 
@@ -243,27 +248,32 @@ main {
   pointer-events: none;
 }
 
-.eyebrow {
-  position: relative;
-  margin: 0 0 20px;
+.eyebrow,
+.section-label {
   color: #9c7b3d;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
 
+.eyebrow {
+  position: relative;
+  margin: 0 0 20px;
+}
+
 .names {
   position: relative;
-  margin: 10px 0 22px;
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(47px, 12vw, 68px);
-  line-height: 1.15;
+  margin: 12px 0 22px;
   color: var(--navy);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(48px, 12vw, 68px);
+  line-height: 1.15;
+  font-weight: 400;
 }
 
 .ampersand {
   display: block;
-  margin: 3px 0;
+  margin: 4px 0;
   color: var(--gold);
   font-family: "Cormorant Garamond", serif;
   font-size: 32px;
@@ -279,8 +289,8 @@ main {
 
 .intro {
   position: relative;
+  max-width: 350px;
   margin: 0 auto;
-  max-width: 340px;
   font-size: 21px;
   line-height: 1.6;
 }
@@ -288,32 +298,28 @@ main {
 .section-card {
   position: relative;
   margin: 24px auto;
-  padding: 30px 20px;
+  padding: 32px 20px;
   border: 1px solid rgba(199,169,107,.85);
   border-radius: 18px;
-  background: rgba(255,253,248,.88);
-  box-shadow: 0 12px 35px rgba(23,40,73,.10);
+  background: rgba(255,253,248,.9);
+  box-shadow: 0 12px 35px rgba(23,40,73,.1);
 }
 
 .section-label {
   margin: 0 0 14px;
-  color: #9c7b3d;
-  font-size: 12px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
 }
 
 .section-title {
   margin: 0;
-  font-weight: 500;
   font-size: clamp(29px, 7vw, 42px);
   line-height: 1.25;
+  font-weight: 500;
 }
 
 .date-number {
   margin: 12px 0;
   color: var(--blue);
-  font-size: clamp(37px, 9vw, 55px);
+  font-size: clamp(40px, 10vw, 56px);
   line-height: 1.1;
 }
 
@@ -324,20 +330,20 @@ main {
 }
 
 .time-detail {
-  margin: 8px 0;
-  font-size: clamp(30px, 8vw, 43px);
+  margin: 12px 0;
   color: var(--blue);
+  font-size: clamp(29px, 8vw, 43px);
 }
 
 .venue-name {
-  margin: 6px 0 15px;
+  margin: 8px 0 15px;
   font-size: 32px;
   font-weight: 600;
 }
 
 .address {
-  margin: 0 auto 20px;
   max-width: 390px;
+  margin: 0 auto 20px;
   font-size: 19px;
   line-height: 1.55;
 }
@@ -354,7 +360,7 @@ main {
 .map-link {
   display: inline-block;
   margin-top: 5px;
-  padding: 11px 21px;
+  padding: 12px 21px;
   border: 1px solid var(--gold);
   border-radius: 30px;
   color: var(--navy);
@@ -366,15 +372,15 @@ main {
 }
 
 .bow-section {
-  padding: 12px 0 5px;
+  padding: 10px 0;
 }
 
 .bow-image {
   display: block;
   width: min(210px, 62%);
   max-height: 220px;
-  object-fit: contain;
   margin: 10px auto;
+  object-fit: contain;
   filter: drop-shadow(0 8px 10px #17284916);
 }
 
@@ -383,7 +389,6 @@ main {
   padding: 35px 18px;
   border-top: 1px solid var(--gold);
   border-bottom: 1px solid var(--gold);
-  color: var(--navy);
 }
 
 .closing-script {
@@ -400,32 +405,30 @@ main {
 
 .footer {
   padding: 12px 0 24px;
-  color: rgba(255,253,248,.9);
+  color: rgba(255,253,248,.95);
   font-family: Arial, sans-serif;
   font-size: 10px;
   letter-spacing: 3px;
 }
 
-[lang="hi"], .hindi-font {
+body.hindi,
+body.hindi .section-card,
+body.hindi .dinner-card {
   font-family: "Noto Sans Devanagari", sans-serif;
-}
-
-[hidden] {
-  display: none !important;
 }
 
 @media (max-width: 380px) {
   main {
-    padding-right: 14px;
     padding-left: 14px;
+    padding-right: 14px;
   }
 
   .dinner-card {
-    padding: 34px 17px;
+    padding: 36px 17px;
   }
 
   .section-card {
-    padding: 26px 15px;
+    padding: 27px 15px;
   }
 
   .map-frame {
@@ -444,7 +447,7 @@ main {
 
 <body class="locked">
 
-<div class="language-switch" aria-label="Choose language">
+<div class="language-switch">
   <button id="englishButton" class="active" type="button">English</button>
   <button id="hindiButton" type="button">हिंदी</button>
 </div>
@@ -456,14 +459,19 @@ main {
 </audio>
 
 <section id="opening" aria-label="Invitation cover">
-  <video id="openingVideo" playsinline preload="auto">
+  <video id="openingVideo" playsinline webkit-playsinline preload="auto">
     <source src="blue..mp4" type="video/mp4">
-    Your browser does not support video.
   </video>
 
-  <img id="coverImage" src="env.jpg" alt="Tap to open the wedding dinner invitation">
+  <img
+    id="coverImage"
+    src="env.jpg"
+    alt="Tap to open the invitation"
+    draggable="false"
+  >
 
   <div class="cover-shade"></div>
+
   <div class="tap-message">
     <span data-en="TAP TO OPEN" data-hi="खोलने के लिए टैप करें">TAP TO OPEN</span>
   </div>
@@ -471,7 +479,7 @@ main {
 
 <div id="scrollHint">
   <span data-en="SCROLL TO DISCOVER" data-hi="आगे देखने के लिए नीचे जाएँ">SCROLL TO DISCOVER</span>
-  <span>⌄</span>
+  <span class="arrow">⌄</span>
 </div>
 
 <main>
@@ -495,29 +503,15 @@ main {
 
   <section class="section-card">
     <p class="section-label" data-en="Save the Date" data-hi="तारीख़ याद रखें">Save the Date</p>
-
-    <h2 class="section-title"
-        data-en="Thursday"
-        data-hi="गुरुवार">Thursday</h2>
-
-    <p class="date-number"
-       data-en="26th"
-       data-hi="26 नवंबर">26th</p>
-
-    <p class="date-detail"
-       data-en="November 2026"
-       data-hi="नवंबर 2026">November 2026</p>
+    <h2 class="section-title" data-en="Thursday" data-hi="गुरुवार">Thursday</h2>
+    <p class="date-number" data-en="26th" data-hi="26">26th</p>
+    <p class="date-detail" data-en="November 2026" data-hi="नवंबर 2026">November 2026</p>
   </section>
 
   <section class="section-card">
     <p class="section-label" data-en="The Celebration" data-hi="समारोह का समय">The Celebration</p>
-
-    <h2 class="section-title"
-        data-en="Time"
-        data-hi="समय">Time</h2>
-
+    <h2 class="section-title" data-en="Time" data-hi="समय">Time</h2>
     <p class="time-detail">6:00 PM – 10:00 PM</p>
-
     <p class="intro"
        data-en="We look forward to celebrating with you."
        data-hi="हमें आपके साथ इस खुशी को मनाने का इंतज़ार रहेगा।">
@@ -540,35 +534,31 @@ main {
 
     <iframe
       class="map-frame"
-      title="Brooks Restaurant location map"
+      title="Brooks Restaurant map"
       src="https://maps.google.com/maps?q=Brooks%20Restaurant%2C%20Mansarovar%20Rd%2C%20Tragad%2C%20Ahmedabad%2C%20Gujarat%20382470&z=15&output=embed"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
       allowfullscreen>
     </iframe>
 
-    <a class="map-link"
-       href="https://www.google.com/maps/search/?api=1&query=Brooks+Restaurant%2C+Mansarovar+Rd%2C+Tragad%2C+Ahmedabad%2C+Gujarat+382470"
-       target="_blank"
-       rel="noopener noreferrer"
-       data-en="OPEN IN GOOGLE MAPS"
-       data-hi="गूगल मैप्स पर देखें">
+    <a
+      class="map-link"
+      href="https://www.google.com/maps/search/?api=1&query=Brooks+Restaurant%2C+Mansarovar+Rd%2C+Tragad%2C+Ahmedabad%2C+Gujarat+382470"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-en="OPEN IN GOOGLE MAPS"
+      data-hi="गूगल मैप्स पर देखें">
       OPEN IN GOOGLE MAPS
     </a>
   </section>
 
-  <section class="bow-section" aria-label="Decorative bow">
+  <section class="bow-section">
     <img class="bow-image" src="bow.PNG" alt="">
   </section>
 
   <section class="closing-card">
-    <p class="closing-script"
-       data-en="With regards"
-       data-hi="सादर">With regards</p>
-
-    <p class="family-name"
-       data-en="KANANI FAMILY"
-       data-hi="कनानी परिवार">KANANI FAMILY</p>
+    <p class="closing-script" data-en="With regards" data-hi="सादर">With regards</p>
+    <p class="family-name" data-en="KANANI FAMILY" data-hi="कनानी परिवार">KANANI FAMILY</p>
   </section>
 
   <footer class="footer"
@@ -586,87 +576,95 @@ const openingVideo = document.getElementById("openingVideo");
 const backgroundMusic = document.getElementById("backgroundMusic");
 const musicButton = document.getElementById("musicButton");
 const scrollHint = document.getElementById("scrollHint");
+
 const englishButton = document.getElementById("englishButton");
 const hindiButton = document.getElementById("hindiButton");
 
 let invitationStarted = false;
-let musicPlaying = false;
 
 function startInvitation() {
   if (invitationStarted) return;
   invitationStarted = true;
 
-  // Start music after the visitor taps the cover.
+  // Play music directly from the visitor's tap.
   backgroundMusic.volume = 0.65;
   backgroundMusic.play().then(() => {
-    musicPlaying = true;
     musicButton.textContent = "♫";
-  }).catch(() => {
-    musicPlaying = false;
+  }).catch((error) => {
+    console.log("Music could not start:", error);
     musicButton.textContent = "♪";
   });
 
-  // Start the invitation video immediately after the tap.
+  // Hide the cover and play the video.
   openingVideo.currentTime = 0;
+
   openingVideo.play().then(() => {
     coverImage.classList.add("fade");
-  }).catch(() => {
-    // Keep the cover visible if the video cannot play.
+  }).catch((error) => {
     invitationStarted = false;
-    alert("Please check that blue..mp4 is uploaded correctly.");
+    console.error("Video playback error:", error);
+    alert("Video play nahi ho rahi. GitHub mein blue..mp4 ka exact filename check karo.");
   });
 }
 
-coverImage.addEventListener("click", startInvitation);
-opening.addEventListener("click", function(event) {
-  if (event.target === opening || event.target.classList.contains("cover-shade")) {
-    startInvitation();
-  }
+// The cover itself receives the tap.
+coverImage.addEventListener("click", function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  startInvitation();
 });
 
+// Also support tapping anywhere on the opening screen.
+opening.addEventListener("click", function() {
+  startInvitation();
+});
+
+// Once the video starts, fade out the cover.
 openingVideo.addEventListener("playing", function() {
   coverImage.classList.add("fade");
 });
 
+// When the video finishes, reveal the invitation page.
 openingVideo.addEventListener("ended", function() {
   opening.classList.add("hidden");
   body.classList.remove("locked");
   scrollHint.classList.add("show");
 
-  // Hide the scroll hint after the visitor starts scrolling.
-  window.setTimeout(() => {
+  setTimeout(() => {
     scrollHint.classList.remove("show");
-  }, 6500);
+  }, 6000);
 });
 
+// Music on/off button.
 musicButton.addEventListener("click", async function() {
   if (backgroundMusic.paused) {
     try {
       await backgroundMusic.play();
-      musicPlaying = true;
       musicButton.textContent = "♫";
     } catch (error) {
       musicButton.textContent = "♪";
     }
   } else {
     backgroundMusic.pause();
-    musicPlaying = false;
     musicButton.textContent = "♪";
   }
 });
 
+// English and Hindi language switching.
 function setLanguage(language) {
-  const isHindi = language === "hi";
+  const hindi = language === "hi";
 
-  document.documentElement.lang = isHindi ? "hi" : "en";
+  document.documentElement.lang = hindi ? "hi" : "en";
+  body.classList.toggle("hindi", hindi);
+
   document.querySelectorAll("[data-en][data-hi]").forEach(element => {
-    element.textContent = isHindi
+    element.textContent = hindi
       ? element.getAttribute("data-hi")
       : element.getAttribute("data-en");
   });
 
-  englishButton.classList.toggle("active", !isHindi);
-  hindiButton.classList.toggle("active", isHindi);
+  englishButton.classList.toggle("active", !hindi);
+  hindiButton.classList.toggle("active", hindi);
 }
 
 englishButton.addEventListener("click", () => setLanguage("en"));
@@ -677,4 +675,3 @@ setLanguage("en");
 
 </body>
 </html>
-
