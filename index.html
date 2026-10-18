@@ -9,25 +9,29 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Cinzel:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --blue-dark: #1c2d59;
+  --blue-light: #edf4fc;
+  --blue-soft: #dbe7f5;
+  --blue-mid: #a9c5e5;
+  --blue: #7198c6;
   --blue-deep: #244a80;
-  --blue-mid: #5b87c5;
-  --blue-light: #8baed6;
-  --blue-pale: #edf4fc;
-  --gold: #d6bd85;
+  --navy: #1c2d59;
+  --gold: #d7c19a;
+  --white: #fff;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
-  background: var(--blue-dark);
+  background: var(--navy);
 }
 
 html.invitation-locked,
@@ -37,79 +41,160 @@ html.invitation-locked body {
 }
 
 body {
-  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  color: var(--navy);
   overflow-x: hidden;
-  color: #fffdf8;
-  font-family: 'Cormorant Garamond', serif;
-  background: linear-gradient(
-    180deg,
-    #edf4fc 0%,
-    #dbe7f5 13%,
-    #a9c5e5 34%,
-    #7198c6 56%,
-    #244a80 79%,
-    #1c2d59 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      var(--blue-light) 0%,
+      var(--blue-soft) 13%,
+      var(--blue-mid) 29%,
+      var(--blue) 47%,
+      var(--blue-deep) 72%,
+      var(--navy) 100%
+    );
+  min-height: 100vh;
 }
 
 button {
   font: inherit;
 }
 
-/* Twinkle canvas */
 #sparkCanvas {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 200;
+  z-index: 400;
   pointer-events: none;
+  opacity: 1;
 }
 
-/* Language */
+/* LANGUAGE BUTTON */
+
 .language-switch {
   position: fixed;
-  z-index: 300;
-  top: max(15px, env(safe-area-inset-top));
-  right: 15px;
-  display: flex;
-  gap: 5px;
-  padding: 5px;
-  border: 1px solid rgba(255,255,255,.6);
-  border-radius: 30px;
-  background: rgba(28,45,89,.6);
-  backdrop-filter: blur(12px);
-}
-
-.language-switch button {
-  border: 0;
-  border-radius: 22px;
-  padding: 8px 12px;
+  z-index: 500;
+  top: max(18px, env(safe-area-inset-top));
+  right: 16px;
+  border: 1px solid rgba(255,255,255,.7);
+  background: rgba(25,43,83,.48);
   color: white;
-  background: transparent;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
+  padding: 8px 15px;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  backdrop-filter: blur(8px);
   cursor: pointer;
 }
 
-.language-switch button.active {
-  color: #243d6a;
-  background: #fffaf0;
+.music-button {
+  position: fixed;
+  z-index: 500;
+  top: max(18px, env(safe-area-inset-top));
+  left: 16px;
+  width: 39px;
+  height: 39px;
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 50%;
+  background: rgba(25,43,83,.48);
+  color: white;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
 }
 
-/* Cover */
+.music-button.show {
+  display: flex;
+}
+
+/* COVER */
+
 #cover {
   position: fixed;
   inset: 0;
   z-index: 250;
+  width: 100%;
+  height: 100%;
+  height: 100svh;
+  overflow: hidden;
   display: flex;
+  align-items: flex-end;
   justify-content: center;
-  align-items: center;
-  padding: 0;
-  background: #edf4fc;
+  padding: 30px 20px max(55px, env(safe-area-inset-bottom));
   cursor: pointer;
+  background: #17294f;
   transition: opacity 1s ease, visibility 1s ease;
-  -webkit-tap-highlight-color: transparent;
+}
+
+#cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("env.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+#cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(16,30,63,.04) 35%,
+    rgba(16,30,63,.18) 62%,
+    rgba(16,30,63,.68) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  animation: coverTextIn 1.8s ease both;
+}
+
+.cover-small {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.5);
+}
+
+.cover-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(38px, 9vw, 58px);
+  font-weight: 400;
+  line-height: 1.2;
+  text-shadow: 0 2px 16px rgba(0,0,0,.45);
+}
+
+.tap-button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 25px;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 30px;
+  background: rgba(255,255,255,.1);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  backdrop-filter: blur(5px);
+  animation: softPulse 2.2s ease-in-out infinite;
 }
 
 #cover.cover-hidden {
@@ -118,81 +203,44 @@ button {
   pointer-events: none;
 }
 
-.cover-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+@keyframes coverTextIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.cover-shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(28,45,89,.02),
-    rgba(28,45,89,.02) 60%,
-    rgba(28,45,89,.25)
-  );
-  pointer-events: none;
+@keyframes softPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+  50% { box-shadow: 0 0 20px rgba(255,255,255,.2); }
 }
 
-.cover-prompt {
-  position: absolute;
-  bottom: max(55px, env(safe-area-inset-bottom));
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-  max-width: 90%;
-  padding: 13px 24px;
-  border: 1px solid rgba(255,255,255,.85);
-  border-radius: 40px;
-  color: white;
-  background: rgba(28,45,89,.45);
-  backdrop-filter: blur(10px);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  pointer-events: none;
-  animation: promptPulse 2s ease-in-out infinite;
-}
+/* VIDEO INTRO */
 
-@keyframes promptPulse {
-  0%, 100% { opacity: .75; }
-  50% { opacity: 1; }
-}
-
-/* Video */
-#intro {
-  position: relative;
-  width: 100%;
-  background: #244a80;
-  isolation: isolate;
-}
-
-.video-stage {
+.video-section {
   position: relative;
   width: 100%;
   height: 100svh;
-  min-height: 540px;
+  min-height: 500px;
   overflow: hidden;
-  background: #244a80;
+  background: linear-gradient(
+    180deg,
+    #17294f 0%,
+    #244a80 72%,
+    #7198c6 100%
+  );
 }
 
 #introVideo {
+  display: block;
   position: absolute;
   inset: 0;
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  background: #244a80;
+  background: #17294f;
 }
 
+/* Softly blends the bottom of the video into the page gradient */
 .video-blend {
   position: absolute;
   inset: 0;
@@ -200,380 +248,350 @@ button {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(36,74,128,0) 0%,
-    rgba(36,74,128,0) 60%,
-    rgba(36,74,128,.10) 70%,
-    rgba(36,74,128,.38) 80%,
-    rgba(36,74,128,.75) 90%,
-    #244a80 100%
+    transparent 62%,
+    rgba(36,74,128,.06) 70%,
+    rgba(113,152,198,.48) 83%,
+    rgba(169,197,229,.82) 93%,
+    #dbe7f5 100%
   );
 }
 
 .scroll-prompt {
   position: absolute;
-  z-index: 4;
-  left: 50%;
-  bottom: 32px;
-  transform: translateX(-50%);
-  width: max-content;
+  z-index: 5;
+  bottom: max(27px, env(safe-area-inset-bottom));
+  left: 0;
+  width: 100%;
   text-align: center;
   color: white;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1.2s ease, visibility 1.2s ease;
-  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+  transform: translateY(8px);
+  transition: opacity .8s ease, transform .8s ease, visibility .8s ease;
+  text-shadow: 0 2px 12px rgba(18,39,79,.6);
   pointer-events: none;
 }
 
 .scroll-prompt.visible {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
 }
 
 .scroll-prompt span {
   display: block;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 9px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
 
 .scroll-arrow {
   display: block;
-  margin-top: 12px;
+  margin-top: 9px;
   font-size: 23px;
-  animation: arrowDown 1.8s ease-in-out infinite;
+  animation: arrowFloat 1.8s ease-in-out infinite;
 }
 
-@keyframes arrowDown {
+@keyframes arrowFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(7px); }
+  50% { transform: translateY(6px); }
 }
 
-/* Main page gradient */
-#invitationContent {
+/* MAIN PAGE */
+
+.invitation-content {
   position: relative;
-  z-index: 3;
-  margin-top: -1px;
-  color: var(--blue-dark);
+  z-index: 1;
+  padding: 0 18px 60px;
   background: linear-gradient(
     180deg,
-    #244a80 0%,
-    #7198c6 24%,
-    #a9c5e5 52%,
-    #dbe7f5 76%,
-    #edf4fc 100%
+    #dbe7f5 0%,
+    #a9c5e5 19%,
+    #7198c6 42%,
+    #244a80 75%,
+    #1c2d59 100%
   );
 }
 
-.content-inner {
-  width: min(100% - 32px, 540px);
+.section {
+  width: 100%;
+  max-width: 520px;
   margin: 0 auto;
+  padding: 50px 0;
 }
 
-/* Event date card */
-#eventDetails {
-  position: relative;
-  padding: 62px 0 68px;
-  text-align: center;
-  scroll-margin-top: 20px;
-}
-
-.event-card {
+.glass-card {
   position: relative;
   overflow: hidden;
-  padding: 46px 24px 43px;
-  border: 1px solid rgba(255,255,255,.86);
-  border-radius: 190px 190px 16px 16px;
-  background: linear-gradient(
-    155deg,
-    rgba(255,255,255,.78),
-    rgba(237,244,252,.53)
-  );
-  box-shadow:
-    0 18px 50px rgba(28,45,89,.12),
-    inset 0 0 0 5px rgba(255,255,255,.16);
-  backdrop-filter: blur(8px);
-}
-
-.event-card::before,
-.event-card::after {
-  content: "✧";
-  display: block;
-  color: #b89a5c;
-  font-size: 23px;
-  line-height: 1;
-}
-
-.event-card::before {
-  margin-bottom: 24px;
-}
-
-.event-card::after {
-  margin-top: 25px;
-}
-
-.insha {
-  margin: 0 0 18px;
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(32px, 8vw, 42px);
-  color: #526f9b;
-}
-
-.event-heading {
-  margin: 0;
-  font-family: 'Cinzel', serif;
-  font-size: clamp(23px, 6vw, 31px);
-  font-weight: 500;
-  letter-spacing: 2px;
-  line-height: 1.5;
-  color: #294873;
-}
-
-.divider {
-  width: 62px;
-  height: 1px;
-  border: 0;
-  margin: 22px auto;
-  background: #b89a5c;
-}
-
-.event-date {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(15px, 4vw, 19px);
-  line-height: 1.8;
-  color: #314d77;
-}
-
-.event-time {
-  margin-top: 12px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-  line-height: 1.9;
-  color: #526f9b;
-}
-
-.event-note {
-  max-width: 310px;
-  margin: 25px auto 0;
-  font-size: 20px;
-  line-height: 1.6;
-  color: #52627c;
-}
-
-/* Venue */
-#venue {
-  position: relative;
-  padding: 28px 0 80px;
+  padding: 38px 23px;
   text-align: center;
+  border: 1px solid rgba(255,255,255,.72);
+  outline: 1px solid rgba(215,193,154,.55);
+  outline-offset: -8px;
+  border-radius: 3px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.82),
+    rgba(237,244,252,.68)
+  );
+  box-shadow: 0 18px 55px rgba(23,45,89,.12);
 }
 
-.section-kicker {
-  margin: 0 0 12px;
-  font-family: 'Montserrat', sans-serif;
+.glass-card::before,
+.glass-card::after {
+  content: "✦";
+  position: absolute;
+  color: #b89c68;
+  font-size: 14px;
+  opacity: .8;
+}
+
+.glass-card::before {
+  top: 17px;
+  left: 19px;
+}
+
+.glass-card::after {
+  bottom: 17px;
+  right: 19px;
+}
+
+.ornament {
+  color: #b69a67;
+  letter-spacing: 7px;
+  font-size: 13px;
+  margin-bottom: 19px;
+}
+
+.arabic {
+  font-size: 28px;
+  line-height: 1.8;
+  color: #244a80;
+  margin-bottom: 13px;
+}
+
+.eyebrow {
+  font-family: Arial, sans-serif;
   font-size: 9px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: #526f9b;
+  color: #607fa6;
+  margin-bottom: 14px;
 }
 
-.section-title {
-  margin: 0 auto 25px;
-  font-family: 'Cinzel', serif;
-  font-size: clamp(25px, 7vw, 34px);
+.script-heading {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(37px, 9vw, 49px);
+  line-height: 1.3;
+  font-weight: 400;
+  color: #244a80;
+  margin-bottom: 9px;
+}
+
+.event-title {
+  font-size: 21px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
   font-weight: 500;
-  color: #294873;
+  color: #244a80;
+  margin: 15px 0 22px;
 }
 
-.venue-card {
-  padding: 32px 22px;
-  border: 1px solid rgba(255,255,255,.82);
-  border-radius: 15px;
-  background: rgba(255,255,255,.52);
-  box-shadow: 0 15px 45px rgba(28,45,89,.10);
-  backdrop-filter: blur(8px);
+.date {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1c2d59;
 }
 
-.venue-icon {
-  width: 53px;
-  height: 53px;
+.time {
+  font-size: 20px;
+  margin-top: 10px;
+  color: #244a80;
+}
+
+.welcome-text {
+  max-width: 340px;
+  margin: 22px auto 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #4c6281;
+}
+
+.divider {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto 17px;
-  border: 1px solid rgba(184,154,92,.6);
-  border-radius: 50%;
-  color: #8b7449;
-  font-size: 23px;
+  gap: 13px;
+  margin: 24px auto;
+  max-width: 220px;
+  color: #b69a67;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, #b69a67);
+}
+
+.divider::after {
+  background: linear-gradient(90deg, #b69a67, transparent);
+}
+
+/* VENUE */
+
+.venue-card {
+  padding-top: 38px;
+  padding-bottom: 30px;
 }
 
 .venue-name {
-  margin: 0 0 12px;
-  font-family: 'Cinzel', serif;
-  font-size: 22px;
-  line-height: 1.5;
-  color: #294873;
+  font-size: 29px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #244a80;
+  margin: 14px 0;
 }
 
 .venue-address {
-  max-width: 370px;
-  margin: 0 auto 23px;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.7;
-  color: #52627c;
+  color: #526a8b;
+  max-width: 360px;
+  margin: 0 auto 22px;
 }
 
 .map-frame {
   width: 100%;
-  height: 245px;
-  border: 1px solid rgba(255,255,255,.9);
-  border-radius: 10px;
+  height: 230px;
+  border: 1px solid rgba(36,74,128,.18);
+  border-radius: 3px;
   overflow: hidden;
+  margin: 20px 0;
   background: #dbe7f5;
 }
 
 .map-frame iframe {
+  display: block;
   width: 100%;
   height: 100%;
   border: 0;
 }
 
-.map-button {
+.location-button {
   display: inline-block;
-  margin-top: 22px;
-  padding: 13px 24px;
-  border: 1px solid #526f9b;
-  border-radius: 30px;
-  background: #294873;
-  color: #fff;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #7198c6, #244a80);
+  padding: 13px 23px;
+  font-family: Arial, sans-serif;
   font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  transition: background .25s ease, transform .25s ease;
+  border: 1px solid rgba(255,255,255,.6);
+  transition: transform .2s ease;
 }
 
-.map-button:hover {
-  background: #1c2d59;
-  transform: translateY(-2px);
+.location-button:active {
+  transform: scale(.97);
 }
 
-/* Closing */
-#closing {
-  position: relative;
-  overflow: hidden;
-  padding: 15px 20px 75px;
-  text-align: center;
+/* CLOSING */
+
+.closing-section {
+  padding-top: 32px;
+  padding-bottom: 22px;
+}
+
+.closing-card {
+  padding: 35px 20px 24px;
   background: linear-gradient(
-    180deg,
-    #edf4fc 0%,
-    #dbe7f5 28%,
-    #a9c5e5 60%,
-    #7198c6 100%
+    145deg,
+    rgba(237,244,252,.95),
+    rgba(219,231,245,.9)
   );
 }
 
-.bow-decoration {
+.bow-image {
   display: block;
-  width: 100px;
+  width: 125px;
+  max-width: 42%;
   height: auto;
-  max-height: 110px;
   object-fit: contain;
-  margin: 0 auto 22px;
-  opacity: .9;
-}
-
-.closing-arabic {
-  margin: 10px 0 22px;
-  font-size: clamp(28px, 7vw, 37px);
-  color: #294873;
-  line-height: 1.7;
+  margin: 0 auto 18px;
+  filter: drop-shadow(0 5px 8px rgba(28,45,89,.1));
 }
 
 .closing-regards {
-  margin: 0 0 6px;
-  font-family: 'Great Vibes', cursive;
-  font-size: 34px;
-  color: #294873;
+  font-size: 19px;
+  color: #607fa6;
+  margin: 17px 0 5px;
 }
 
-.closing-family {
-  margin: 0;
-  font-family: 'Cinzel', serif;
-  font-size: 19px;
-  letter-spacing: 3px;
-  color: #294873;
+.family-name {
+  font-family: "Great Vibes", cursive;
+  font-size: 39px;
+  color: #244a80;
+  line-height: 1.5;
 }
 
 .save-date {
-  margin: 45px 0 0;
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
+  margin-top: 26px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
   letter-spacing: 5px;
-  color: #294873;
+  color: #244a80;
 }
 
-.closing-ornament {
-  width: 65px;
-  height: 1px;
-  margin: 22px auto;
-  background: #b89a5c;
+.footer-ornament {
+  color: #b69a67;
+  margin-top: 20px;
+  letter-spacing: 6px;
+  font-size: 12px;
 }
 
-/* Music button */
-.music-button {
-  position: fixed;
-  z-index: 300;
-  left: 15px;
-  bottom: max(17px, env(safe-area-inset-bottom));
-  display: none;
-  width: 43px;
-  height: 43px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255,255,255,.75);
-  border-radius: 50%;
-  background: rgba(28,45,89,.72);
-  color: white;
-  font-size: 17px;
-  backdrop-filter: blur(10px);
-  cursor: pointer;
+[hidden] {
+  display: none !important;
 }
 
-.music-button.show {
-  display: flex;
+/* HINDI FONT SUPPORT */
+
+body.hindi .eyebrow,
+body.hindi .tap-button,
+body.hindi .scroll-prompt span,
+body.hindi .location-button,
+body.hindi .save-date {
+  letter-spacing: 1px;
 }
 
-.music-button.playing span {
-  animation: musicSpin 5s linear infinite;
+body.hindi .cover-title,
+body.hindi .script-heading,
+body.hindi .family-name {
+  font-family: "Noto Sans Devanagari", sans-serif;
 }
 
-@keyframes musicSpin {
-  to { transform: rotate(360deg); }
-}
-
-@media (max-width: 480px) {
-  .video-stage {
-    min-height: 100svh;
+@media (max-width: 380px) {
+  .invitation-content {
+    padding-left: 13px;
+    padding-right: 13px;
   }
 
-  #eventDetails {
-    padding-top: 48px;
-    padding-bottom: 52px;
+  .glass-card {
+    padding: 34px 17px;
   }
 
-  .event-card {
-    padding: 39px 19px 35px;
+  .date {
+    font-size: 22px;
+  }
+
+  .venue-name {
+    font-size: 26px;
   }
 
   .map-frame {
-    height: 220px;
-  }
-
-  .venue-card {
-    padding: 27px 17px;
+    height: 205px;
   }
 }
 
@@ -582,8 +600,8 @@ button {
     scroll-behavior: auto;
   }
 
-  .scroll-arrow,
-  .cover-prompt {
+  .tap-button,
+  .scroll-arrow {
     animation: none;
   }
 }
@@ -594,361 +612,412 @@ button {
 
 <canvas id="sparkCanvas" aria-hidden="true"></canvas>
 
-<div class="language-switch" aria-label="Choose language">
-  <button type="button" class="active" id="englishButton">EN</button>
-  <button type="button" id="hindiButton">हिन्दी</button>
-</div>
+<button class="language-switch" id="languageSwitch" type="button" aria-label="Switch language">
+  हिंदी
+</button>
 
-<!-- Cover: tap anywhere to open -->
+<button class="music-button" id="musicButton" type="button" aria-label="Toggle music">
+  ♫
+</button>
+
+<!-- COVER IMAGE: env.jpg -->
 <div id="cover" role="button" tabindex="0" aria-label="Tap to open invitation">
-  <img class="cover-image" src="env.jpg" alt="Invitation cover">
-  <div class="cover-shade"></div>
-  <div class="cover-prompt"
-       data-en="Tap to Open"
-       data-hi="खोलने के लिए टैप करें">Tap to Open</div>
+  <div class="cover-content">
+    <p class="cover-small" data-en="You are warmly invited" data-hi="आप सादर आमंत्रित हैं">
+      You are warmly invited
+    </p>
+    <h1 class="cover-title" data-en="A Special Evening" data-hi="एक खास शाम">
+      A Special Evening
+    </h1>
+    <div class="tap-button" data-en="Tap to Open" data-hi="खोलने के लिए टैप करें">
+      Tap to Open
+    </div>
+  </div>
 </div>
 
-<!-- Intro video -->
-<section id="intro" aria-label="Invitation video">
-  <div class="video-stage">
-    <video
-      id="introVideo"
-      playsinline
-      webkit-playsinline
-      preload="auto"
-      disablepictureinpicture
-      poster="env.jpg"
-    >
-      <source src="blue..mp4" type="video/mp4">
-      Your browser does not support this video.
-    </video>
+<!-- FULL-SCREEN VIDEO -->
+<section class="video-section" id="videoSection" aria-label="Invitation video">
+  <video
+    id="introVideo"
+    playsinline
+    webkit-playsinline
+    preload="auto"
+    disablepictureinpicture
+    poster="env.jpg"
+  >
+    <source src="blue..mp4" type="video/mp4">
+  </video>
 
-    <div class="video-blend"></div>
+  <div class="video-blend"></div>
 
-    <div class="scroll-prompt" id="scrollPrompt">
-      <span data-en="Scroll to Discover"
-            data-hi="आगे देखने के लिए स्क्रॉल करें">Scroll to Discover</span>
-      <b class="scroll-arrow">↓</b>
-    </div>
+  <div class="scroll-prompt" id="scrollPrompt">
+    <span data-en="Scroll to Discover" data-hi="आगे देखने के लिए स्क्रॉल करें">
+      Scroll to Discover
+    </span>
+    <span class="scroll-arrow">⌄</span>
   </div>
 </section>
 
-<!-- Main invitation -->
-<main id="invitationContent">
+<!-- MUSIC FILE -->
+<audio id="backgroundMusic" src="dulha.mp3" loop preload="auto"></audio>
 
-  <!-- Date and time directly after video -->
-  <section id="eventDetails">
-    <div class="content-inner">
-      <div class="event-card">
+<main class="invitation-content" id="invitationContent">
 
-        <p class="insha"
-           data-en="Insha’Allah"
-           data-hi="इंशाअल्लाह">Insha’Allah</p>
+  <!-- DATE AND TIME -->
+  <section class="section" id="eventDetails">
+    <div class="glass-card">
+      <div class="ornament">✧ ❦ ✧</div>
 
-        <h1 class="event-heading"
-            data-en="Wedding Dinner"
-            data-hi="वेडिंग डिनर">Wedding Dinner</h1>
+      <p class="arabic" lang="ar">إِنْ شَاءَ اللّٰهُ</p>
 
-        <hr class="divider">
+      <p class="eyebrow"
+         data-en="Together for a beautiful evening"
+         data-hi="एक खूबसूरत शाम के लिए">
+        Together for a beautiful evening
+      </p>
 
-        <div class="event-date"
-             data-en="Thursday, 26th November 2026"
-             data-hi="गुरुवार, 26 नवंबर 2026">
-          Thursday, 26th November 2026
-        </div>
+      <h2 class="script-heading"
+          data-en="With joy in our hearts"
+          data-hi="दिल में खुशियों के साथ">
+        With joy in our hearts
+      </h2>
 
-        <div class="event-time"
-             data-en="6:00 PM – 10:00 PM"
-             data-hi="शाम 6:00 बजे – रात 10:00 बजे">
-          6:00 PM – 10:00 PM
-        </div>
+      <div class="divider">✦</div>
 
-        <p class="event-note"
-           data-en="We look forward to celebrating this special evening with you."
-           data-hi="इस खास शाम को आपके साथ मनाने के लिए हम उत्सुक हैं।">
-          We look forward to celebrating this special evening with you.
-        </p>
+      <p class="event-title"
+         data-en="Wedding Dinner"
+         data-hi="वेडिंग डिनर">
+        Wedding Dinner
+      </p>
 
-      </div>
+      <p class="date"
+         data-en="Thursday, 26th November 2026"
+         data-hi="गुरुवार, 26 नवंबर 2026">
+        Thursday, 26th November 2026
+      </p>
+
+      <p class="time"
+         data-en="6:00 PM – 10:00 PM"
+         data-hi="शाम 6:00 – रात 10:00 बजे">
+        6:00 PM – 10:00 PM
+      </p>
+
+      <p class="welcome-text"
+         data-en="With grateful hearts, we look forward to sharing this special evening with you. Your presence will make our celebration even more memorable."
+         data-hi="हम इस खास शाम को आपके साथ मनाने के लिए उत्सुक हैं। आपकी मौजूदगी हमारी खुशियों को और भी यादगार बना देगी।">
+        With grateful hearts, we look forward to sharing this special evening with you. Your presence will make our celebration even more memorable.
+      </p>
+
+      <div class="divider">❦</div>
+
+      <p class="eyebrow"
+         data-en="Your presence is our blessing"
+         data-hi="आपकी मौजूदगी हमारे लिए आशीर्वाद है">
+        Your presence is our blessing
+      </p>
     </div>
   </section>
 
-  <!-- Venue -->
-  <section id="venue">
-    <div class="content-inner">
+  <!-- VENUE AND MAP -->
+  <section class="section" id="venueDetails">
+    <div class="glass-card venue-card">
+      <div class="ornament">✧ ❦ ✧</div>
 
-      <p class="section-kicker"
-         data-en="The Celebration"
-         data-hi="समारोह">The Celebration</p>
+      <p class="eyebrow"
+         data-en="The place"
+         data-hi="कार्यक्रम का स्थान">
+        The place
+      </p>
 
-      <h2 class="section-title"
-          data-en="The Venue"
-          data-hi="कार्यक्रम स्थल">The Venue</h2>
+      <h2 class="script-heading"
+          data-en="Join us at"
+          data-hi="हमसे यहाँ मिलें">
+        Join us at
+      </h2>
 
-      <div class="venue-card">
+      <h3 class="venue-name">Brooks Restaurant</h3>
 
-        <div class="venue-icon" aria-hidden="true">⌖</div>
+      <p class="venue-address"
+         data-en="Mansarovar Rd, beside Kataria Maruti Suzuki Service Center, Tragad, Ahmedabad, Gujarat 382470"
+         data-hi="मानसरोवर रोड, कटारिया मारुति सुज़ुकी सर्विस सेंटर के पास, त्रागड़, अहमदाबाद, गुजरात 382470">
+        Mansarovar Rd, beside Kataria Maruti Suzuki Service Center, Tragad, Ahmedabad, Gujarat 382470
+      </p>
 
-        <h3 class="venue-name">Brooks Restaurant</h3>
-
-        <p class="venue-address"
-           data-en="Mansarovar Rd, beside Kataria Maruti Suzuki Service Center, Tragad, Ahmedabad, Gujarat 382470"
-           data-hi="मानसरोवर रोड, कटारिया मारुति सुज़ुकी सर्विस सेंटर के पास, त्रागड़, अहमदाबाद, गुजरात 382470">
-          Mansarovar Rd, beside Kataria Maruti Suzuki Service Center,
-          Tragad, Ahmedabad, Gujarat 382470
-        </p>
-
-        <div class="map-frame">
-          <iframe
-            title="Brooks Restaurant location map"
-            src="https://maps.google.com/maps?q=Brooks%20Restaurant%2C%20Mansarovar%20Rd%2C%20Tragad%2C%20Ahmedabad%2C%20Gujarat%20382470&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <a
-          class="map-button"
-          href="https://www.google.com/maps/search/?api=1&query=Brooks+Restaurant+Mansarovar+Rd+Tragad+Ahmedabad+Gujarat+382470"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-en="View Location"
-          data-hi="लोकेशन देखें">View Location</a>
-
+      <div class="map-frame">
+        <iframe
+          title="Brooks Restaurant location map"
+          src="https://maps.google.com/maps?q=Brooks%20Restaurant%2C%20Mansarovar%20Rd%2C%20Tragad%2C%20Ahmedabad%2C%20Gujarat%20382470&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
       </div>
+
+      <a
+        class="location-button"
+        href="https://www.google.com/maps/search/?api=1&query=Brooks+Restaurant+Mansarovar+Rd+Tragad+Ahmedabad+Gujarat+382470"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-en="View Location ↗"
+        data-hi="लोकेशन देखें ↗">
+        View Location ↗
+      </a>
     </div>
   </section>
 
-  <!-- Closing -->
-  <footer id="closing">
+  <!-- CLOSING -->
+  <section class="section closing-section" id="closing">
+    <div class="glass-card closing-card">
 
-    <img class="bow-decoration" src="bow.PNG" alt="" loading="lazy">
+      <img
+        class="bow-image"
+        src="bow.PNG"
+        alt="Decorative blue bow"
+        loading="lazy"
+      >
 
-    <p class="closing-arabic" lang="ar" dir="rtl">الْحَمْدُ لِلَّٰهِ</p>
+      <div class="ornament">✧ ❦ ✧</div>
 
-    <p class="closing-regards"
-       data-en="With regards,"
-       data-hi="सादर,">With regards,</p>
+      <p class="arabic" lang="ar">الْحَمْدُ لِلَّٰهِ</p>
 
-    <p class="closing-family">Kanani Family</p>
+      <p class="closing-regards"
+         data-en="With regards,"
+         data-hi="सादर,">
+        With regards,
+      </p>
 
-    <div class="closing-ornament"></div>
+      <h2 class="family-name">Kanani Family</h2>
 
-    <p class="save-date"
-       data-en="SAVE THE DATE"
-       data-hi="तारीख़ याद रखें">SAVE THE DATE</p>
+      <div class="divider">✦</div>
 
-  </footer>
+      <p class="save-date">SAVE THE DATE</p>
+
+      <p class="footer-ornament">✧ ❦ ✧</p>
+    </div>
+  </section>
+
 </main>
 
-<audio id="backgroundMusic" loop preload="auto">
-  <source src="dulha.mp3" type="audio/mpeg">
-</audio>
-
-<button type="button" class="music-button" id="musicButton"
-        aria-label="Pause or resume music" title="Music on/off">
-  <span id="musicIcon">♫</span>
-</button>
-
 <script>
-const cover = document.getElementById('cover');
-const introVideo = document.getElementById('introVideo');
-const backgroundMusic = document.getElementById('backgroundMusic');
-const scrollPrompt = document.getElementById('scrollPrompt');
-const musicButton = document.getElementById('musicButton');
-const musicIcon = document.getElementById('musicIcon');
+(function () {
+  "use strict";
 
-let invitationStarted = false;
+  const cover = document.getElementById("cover");
+  const introVideo = document.getElementById("introVideo");
+  const backgroundMusic = document.getElementById("backgroundMusic");
+  const musicButton = document.getElementById("musicButton");
+  const scrollPrompt = document.getElementById("scrollPrompt");
+  const languageSwitch = document.getElementById("languageSwitch");
 
-/* Language */
-function setLanguage(language) {
-  document.documentElement.lang = language === 'hi' ? 'hi' : 'en';
+  let invitationStarted = false;
+  let isHindi = false;
 
-  document.querySelectorAll('[data-en][data-hi]').forEach(function(element) {
-    element.textContent = element.getAttribute('data-' + language);
-  });
+  /* VERY SMALL, SOFT WHITE TWINKLING PARTICLES */
+  (function createTwinkles() {
+    const canvas = document.getElementById("sparkCanvas");
+    const ctx = canvas.getContext("2d");
 
-  document.getElementById('englishButton').classList.toggle('active', language === 'en');
-  document.getElementById('hindiButton').classList.toggle('active', language === 'hi');
-}
+    let width = 0;
+    let height = 0;
+    let ratio = 1;
+    let particles = [];
 
-document.getElementById('englishButton').addEventListener('click', function() {
-  setLanguage('en');
-});
+    function resizeCanvas() {
+      ratio = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
 
-document.getElementById('hindiButton').addEventListener('click', function() {
-  setLanguage('hi');
-});
+      canvas.width = Math.round(width * ratio);
+      canvas.height = Math.round(height * ratio);
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
 
-/* Cover tap */
-function startInvitation() {
-  if (invitationStarted) return;
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-  invitationStarted = true;
-  cover.classList.add('cover-hidden');
-  document.documentElement.classList.remove('invitation-locked');
-  document.body.style.overflowX = 'hidden';
-  musicButton.classList.add('show');
+      particles = Array.from({ length: 110 }, function () {
+        return {
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 0.55 + 0.35,
+          phase: Math.random() * Math.PI * 2,
+          speed: Math.random() * 0.12 + 0.015
+        };
+      });
+    }
 
-  /*
-    Attempt video playback during the actual tap.
-    If the file is missing or playback fails, show the cover again
-    so the visitor can retry after correcting the video filename.
-  */
-  const videoPromise = introVideo.play();
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
 
-  if (videoPromise && typeof videoPromise.catch === 'function') {
-    videoPromise.catch(function(error) {
-      console.error('Video playback failed:', error);
-      invitationStarted = false;
-      cover.classList.remove('cover-hidden');
-      document.documentElement.classList.add('invitation-locked');
-      alert('Video play nahi hui. blue..mp4 filename check karo.');
-    });
-  }
+      const time = performance.now() * 0.001;
 
-  backgroundMusic.volume = 0.55;
-  backgroundMusic.play().then(updateMusicButton).catch(function() {
-    updateMusicButton();
-  });
-}
+      particles.forEach(function (p) {
+        const twinkle = (Math.sin(time * 2.2 + p.phase) + 1) / 2;
 
-cover.addEventListener('click', startInvitation);
-
-cover.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    startInvitation();
-  }
-});
-
-/* Freeze at final frame and show scroll prompt */
-introVideo.addEventListener('ended', function() {
-  introVideo.pause();
-
-  try {
-    introVideo.currentTime = introVideo.duration;
-  } catch (error) {
-    /* Keep the browser's final frame. */
-  }
-
-  scrollPrompt.classList.add('visible');
-});
-
-/* Music control */
-function updateMusicButton() {
-  const playing = !backgroundMusic.paused;
-
-  musicButton.classList.toggle('playing', playing);
-  musicIcon.textContent = playing ? '♫' : '♪';
-  musicButton.setAttribute('aria-label', playing ? 'Pause music' : 'Resume music');
-}
-
-musicButton.addEventListener('click', function() {
-  if (backgroundMusic.paused) {
-    backgroundMusic.play().then(updateMusicButton).catch(function() {});
-  } else {
-    backgroundMusic.pause();
-    updateMusicButton();
-  }
-});
-
-backgroundMusic.addEventListener('play', updateMusicButton);
-backgroundMusic.addEventListener('pause', updateMusicButton);
-
-/* Small white twinkle sparkles */
-(function createTwinkles() {
-  const canvas = document.getElementById('sparkCanvas');
-  const ctx = canvas.getContext('2d');
-
-  let width = 0;
-  let height = 0;
-  let ratio = 1;
-  let particles = [];
-
-  function resizeCanvas() {
-    ratio = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-
-    canvas.width = width * ratio;
-    canvas.height = height * ratio;
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
-
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-    const count = Math.min(65, Math.max(30, Math.floor(width / 6)));
-
-    particles = Array.from({ length: count }, function() {
-      return {
-        x: Math.random() * width,
-        y: Math.random() * height,
-        size: Math.random() * 1.35 + 0.45,
-        phase: Math.random() * Math.PI * 2,
-        speed: Math.random() * 0.17 + 0.025,
-        drift: (Math.random() - 0.5) * 0.12
-      };
-    });
-  }
-
-  function drawSparkles() {
-    ctx.clearRect(0, 0, width, height);
-    const time = performance.now() * 0.001;
-
-    particles.forEach(function(p) {
-      const twinkle = (Math.sin(time * 2.1 + p.phase) + 1) / 2;
-      const alpha = 0.12 + twinkle * 0.78;
-
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.globalAlpha = alpha;
-
-      /* Tiny white glowing dot */
-      ctx.beginPath();
-      ctx.arc(0, 0, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = '#ffffff';
-      ctx.shadowColor = '#ffffff';
-      ctx.shadowBlur = 7;
-      ctx.fill();
-
-      /* Fine cross-shaped twinkle */
-      if (twinkle > 0.68) {
-        ctx.shadowBlur = 5;
-        ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 0.55;
-
-        const length = 3 + twinkle * 3;
+        ctx.save();
+        ctx.globalAlpha = 0.12 + twinkle * 0.78;
+        ctx.fillStyle = "#ffffff";
+        ctx.shadowColor = "#ffffff";
+        ctx.shadowBlur = twinkle > 0.8 ? 4 : 1;
 
         ctx.beginPath();
-        ctx.moveTo(-length, 0);
-        ctx.lineTo(length, 0);
-        ctx.moveTo(0, -length);
-        ctx.lineTo(0, length);
-        ctx.stroke();
-      }
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
 
-      ctx.restore();
+        if (twinkle > 0.94) {
+          ctx.globalAlpha = twinkle * 0.55;
+          ctx.lineWidth = 0.4;
+          ctx.strokeStyle = "#ffffff";
 
-      p.y -= p.speed;
-      p.x += p.drift;
+          ctx.beginPath();
+          ctx.moveTo(p.x - 1.7, p.y);
+          ctx.lineTo(p.x + 1.7, p.y);
+          ctx.moveTo(p.x, p.y - 1.7);
+          ctx.lineTo(p.x, p.y + 1.7);
+          ctx.stroke();
+        }
 
-      if (p.y < -8) {
-        p.y = height + 8;
-        p.x = Math.random() * width;
-      }
+        ctx.restore();
 
-      if (p.x < -8) p.x = width + 8;
-      if (p.x > width + 8) p.x = -8;
+        p.y -= p.speed;
+
+        if (p.y < -3) {
+          p.y = height + 3;
+          p.x = Math.random() * width;
+        }
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resizeCanvas, { passive: true });
+    resizeCanvas();
+    draw();
+  })();
+
+  /* LANGUAGE SWITCH */
+  function updateLanguage() {
+    document.documentElement.lang = isHindi ? "hi" : "en";
+    document.body.classList.toggle("hindi", isHindi);
+
+    document.querySelectorAll("[data-en][data-hi]").forEach(function (element) {
+      element.textContent = isHindi
+        ? element.getAttribute("data-hi")
+        : element.getAttribute("data-en");
     });
 
-    requestAnimationFrame(drawSparkles);
+    languageSwitch.textContent = isHindi ? "English" : "हिंदी";
   }
 
-  window.addEventListener('resize', resizeCanvas, { passive: true });
-  resizeCanvas();
-  drawSparkles();
+  languageSwitch.addEventListener("click", function (event) {
+    event.stopPropagation();
+    isHindi = !isHindi;
+    updateLanguage();
+  });
+
+  /* MUSIC BUTTON */
+  function updateMusicButton() {
+    musicButton.textContent = backgroundMusic.paused ? "♫" : "♪";
+    musicButton.setAttribute(
+      "aria-label",
+      backgroundMusic.paused ? "Play music" : "Pause music"
+    );
+  }
+
+  musicButton.addEventListener("click", function () {
+    if (backgroundMusic.paused) {
+      backgroundMusic.play().then(updateMusicButton).catch(updateMusicButton);
+    } else {
+      backgroundMusic.pause();
+      updateMusicButton();
+    }
+  });
+
+  /* TAP TO OPEN: START VIDEO AND MUSIC */
+  function startInvitation() {
+    if (invitationStarted) return;
+
+    invitationStarted = true;
+
+    cover.classList.add("cover-hidden");
+    document.documentElement.classList.remove("invitation-locked");
+    musicButton.classList.add("show");
+
+    backgroundMusic.volume = 0.55;
+
+    backgroundMusic.play().then(updateMusicButton).catch(function () {
+      updateMusicButton();
+    });
+
+    /*
+      The video is muted so background music can play clearly.
+      If your video needs its original sound, change muted to false
+      or remove this line and test on your phone.
+    */
+    introVideo.muted = true;
+    introVideo.playsInline = true;
+
+    const videoPromise = introVideo.play();
+
+    if (videoPromise && typeof videoPromise.catch === "function") {
+      videoPromise.catch(function (error) {
+        console.error("Video could not play:", error);
+
+        invitationStarted = false;
+        cover.classList.remove("cover-hidden");
+        document.documentElement.classList.add("invitation-locked");
+        musicButton.classList.remove("show");
+
+        backgroundMusic.pause();
+        updateMusicButton();
+
+        alert(
+          "Video play nahi hui. Check karo ke video file ka naam blue..mp4 hai aur file index.html ke saath same folder mein hai."
+        );
+      });
+    }
+  }
+
+  cover.addEventListener("click", startInvitation);
+
+  cover.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      startInvitation();
+    }
+  });
+
+  /* WHEN VIDEO ENDS: FREEZE LAST FRAME AND SHOW SCROLL */
+  introVideo.addEventListener("ended", function () {
+    introVideo.pause();
+
+    try {
+      if (Number.isFinite(introVideo.duration)) {
+        introVideo.currentTime = introVideo.duration;
+      }
+    } catch (error) {
+      console.log("Keeping the final video frame.");
+    }
+
+    scrollPrompt.classList.add("visible");
+
+    /*
+      Scrolling becomes available after the video ends.
+      The video remains in the page, showing its last frame.
+    */
+    document.documentElement.classList.remove("invitation-locked");
+  });
+
+  /* If the visitor taps the scroll prompt area after the video,
+     normal page scrolling works. */
+  scrollPrompt.addEventListener("click", function () {
+    document.getElementById("eventDetails").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+
+  updateLanguage();
+  updateMusicButton();
 })();
 </script>
 
